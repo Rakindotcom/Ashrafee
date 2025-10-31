@@ -369,12 +369,12 @@ const WhyChooseSection = () => {
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {mobileSlides.map((slide, slideIndex) => (
-                  <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div key={slideIndex} className="w-full shrink-0">
                     <div className="grid grid-cols-2 gap-4 p-4">
                       {slide.map((amenity, index) => (
                         <div key={index} className="bg-elegant-cream p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105 text-center min-h-[160px] flex flex-col justify-center">
                           <div className="flex flex-col items-center">
-                            <div className="flex justify-center mb-3 flex-shrink-0">
+                            <div className="flex justify-center mb-3 shrink-0">
                               <div className="text-orange">
                                 {React.cloneElement(amenity.icon, { size: 32 })}
                               </div>
@@ -398,12 +398,12 @@ const WhyChooseSection = () => {
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
                 {desktopSlides.map((slide, slideIndex) => (
-                  <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div key={slideIndex} className="w-full shrink-0">
                     <div className="grid grid-cols-3 gap-6 p-4">
                       {slide.map((amenity, index) => (
                         <div key={index} className="bg-elegant-cream p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover:transform hover:scale-105 text-center min-h-[200px] flex flex-col justify-center">
                           <div className="flex flex-col items-center">
-                            <div className="flex justify-center mb-4 flex-shrink-0">
+                            <div className="flex justify-center mb-4 shrink-0">
                               <div className="text-orange">
                                 {React.cloneElement(amenity.icon, { size: 48 })}
                               </div>

@@ -26,9 +26,9 @@ const Header = () => {
           {/* Logo Section */}
           <Link to="/" className="flex items-center group">
             <div className="relative">
-              <img 
-                src="/logo.png" 
-                alt="Hotel Ashrafee" 
+              <img
+                src="/logo.png"
+                alt="Hotel Ashrafee"
                 className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-orange opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300"></div>
@@ -45,15 +45,15 @@ const Header = () => {
                   className={`
                     relative px-6 py-3 mx-1 rounded-full text-sm font-semibold tracking-wide
                     transition-all duration-300 ease-in-out
-                    ${isActive(item.path) 
-                      ? 'bg-orange text-white shadow-lg shadow-orange/30 transform scale-105' 
+                    ${isActive(item.path)
+                      ? 'bg-orange text-white shadow-lg shadow-orange/30 transform scale-105'
                       : 'text-white hover:text-white hover:bg-orange/20 hover:shadow-md hover:transform hover:scale-105'
                     }
                   `}
                 >
                   <span className="relative z-10">{item.label}</span>
                   {!isActive(item.path) && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange/10 via-orange/30 to-orange/10 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-linear-to-r from-orange/10 via-orange/30 to-orange/10 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                   )}
                 </Link>
               ))}
@@ -64,27 +64,27 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-3">
             {/* Contact Icons */}
             <div className="flex items-center space-x-2 mr-4">
-              <a 
-                href="tel:+8801828183920" 
+              <a
+                href="tel:+8801828183920"
                 className="p-3 rounded-full bg-navy-darker/60 text-white hover:bg-orange hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg group border border-gray-600/30"
                 title="Call us"
               >
                 <Phone size={18} className="group-hover:animate-pulse" />
               </a>
-              <a 
-                href="https://wa.me/8801828183920" 
+              <a
+                href="https://wa.me/8801828183920"
                 className="p-3 rounded-full bg-navy-darker/60 text-white hover:bg-green-500 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg group border border-gray-600/30"
                 title="WhatsApp us"
               >
                 <MessageCircle size={18} className="group-hover:animate-pulse" />
               </a>
             </div>
-            
+
             {/* Book Now Button */}
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="
-                relative px-8 py-3 bg-gradient-to-r from-orange to-orange-hover 
+                relative px-8 py-3 bg-linear-to-r from-orange to-orange-hover 
                 text-white font-bold text-sm tracking-wide rounded-full
                 shadow-lg shadow-orange/30 hover:shadow-xl hover:shadow-orange/40
                 transition-all duration-300 hover:scale-105 hover:from-orange-hover hover:to-orange
@@ -92,12 +92,12 @@ const Header = () => {
               "
             >
               <span className="relative z-10">BOOK NOW</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="lg:hidden p-2 rounded-lg bg-navy-darker/60 text-white hover:bg-orange/80 transition-all duration-300 border border-gray-600/30"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -121,8 +121,8 @@ const Header = () => {
                   className={`
                     block px-6 py-4 rounded-xl text-base font-semibold tracking-wide
                     transition-all duration-300 transform
-                    ${isActive(item.path) 
-                      ? 'bg-orange text-white shadow-lg translate-x-2' 
+                    ${isActive(item.path)
+                      ? 'bg-orange text-white shadow-lg translate-x-2'
                       : 'text-white hover:text-white hover:bg-orange/20 hover:translate-x-2 hover:shadow-md'
                     }
                   `}
@@ -131,26 +131,26 @@ const Header = () => {
                 </Link>
               ))}
             </div>
-            
+
             {/* Mobile CTA */}
             <div className="mt-6 pt-6 border-t border-gray-600/30">
               <div className="flex items-center justify-center space-x-4 mb-4">
-                <a 
-                  href="tel:+8801828183920" 
+                <a
+                  href="tel:+8801828183920"
                   className="p-3 rounded-full bg-navy text-white hover:bg-orange transition-all duration-300 border border-gray-600/30"
                 >
                   <Phone size={20} />
                 </a>
-                <a 
-                  href="https://wa.me/8801828183920" 
+                <a
+                  href="https://wa.me/8801828183920"
                   className="p-3 rounded-full bg-navy text-white hover:bg-green-500 transition-all duration-300 border border-gray-600/30"
                 >
                   <MessageCircle size={20} />
                 </a>
               </div>
-              <Link 
-                to="/contact" 
-                className="block w-full py-4 bg-gradient-to-r from-orange to-orange-hover text-white font-bold text-center rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              <Link
+                to="/contact"
+                className="block w-full py-4 bg-linear-to-r from-orange to-orange-hover text-white font-bold text-center rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 BOOK NOW
