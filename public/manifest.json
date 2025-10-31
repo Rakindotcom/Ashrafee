@@ -1,0 +1,29 @@
+{
+  "name": "Hotel Ashrafee - 3-Star Hotel in Dhaka Since 1990",
+  "short_name": "Hotel Ashrafee",
+  "description": "Experience comfort and heritage at Hotel Ashrafee, Dhaka's trusted 3-star hotel since 1990.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e3a8a",
+  "theme_color": "#1e3a8a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["travel", "hospitality", "accommodation"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}

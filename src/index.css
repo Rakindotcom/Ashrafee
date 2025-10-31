@@ -1,0 +1,753 @@
+/* Using only ObjectSans font */
+@import "tailwindcss";
+
+/* Custom Font Face for Body Font */
+@font-face {
+  font-family: 'ObjectSans';
+  src: url('/OBJECTSANSREGULAR.OTF') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Custom Properties for Brand Colors */
+:root {
+  /* Primary Navy Colors */
+  --navy-primary: #041749;
+  --navy-dark: #040813;
+  --navy-light: #1e293b;
+  --navy-darker: #0f172a;
+
+  /* Secondary Orange Colors */
+  --orange-primary: #fb923c;
+  --orange-alt: #ff9052;
+  --orange-hover: #f97316;
+  --orange-active: #ea580c;
+
+  /* Supporting Colors */
+  --heritage-gold: #D4AF37;
+  --dhaka-green: #10b981;
+  --warm-burgundy: #dc2626;
+  --elegant-cream: #f8f9fa;
+  --soft-white: #FAFAFA;
+  --light-gray: #f1f5f9;
+  --deep-charcoal: #1f2937;
+}
+
+/* Base Styles */
+body {
+  font-family: 'ObjectSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--deep-charcoal);
+}
+
+/* Ensure all elements use ObjectSans by default */
+* {
+  font-family: 'ObjectSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Premium Header Font */
+.header-font {
+  font-family: 'ObjectSans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'ObjectSans', sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3rem;
+  /* 48px */
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.25rem;
+  /* 36px */
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.75rem;
+  /* 28px */
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 1.5rem;
+  /* 24px */
+  line-height: 1.4;
+}
+
+/* Mobile Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+    /* 36px */
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    /* 28px */
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    /* 24px */
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    /* 20px */
+  }
+}
+
+/* Utility Classes */
+.text-navy {
+  color: var(--navy-primary);
+}
+
+.text-navy-dark {
+  color: var(--navy-dark);
+}
+
+.text-orange {
+  color: var(--orange-primary);
+}
+
+.text-heritage-gold {
+  color: var(--heritage-gold);
+}
+
+.bg-navy {
+  background-color: var(--navy-primary);
+}
+
+.bg-navy-dark {
+  background-color: var(--navy-dark);
+}
+
+.bg-orange {
+  background-color: var(--orange-primary);
+}
+
+.bg-elegant-cream {
+  background-color: var(--elegant-cream);
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--orange-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--orange-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  background-color: var(--orange-active);
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--orange-primary);
+  border: 2px solid var(--orange-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--orange-primary);
+  color: white;
+}
+
+.btn-whatsapp {
+  background-color: var(--dhaka-green);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--orange-primary);
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* A
+ccessibility - Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+}
+
+.whatsapp-float.pulse {
+  animation: pulse-whatsapp 2s infinite;
+}
+
+/* Hide WhatsApp button when footer is visible */
+.whatsapp-float.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+  }
+}
+
+/* Form Input Styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  font-family: 'ObjectSans', sans-serif;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-family: 'ObjectSans', sans-serif;
+}
+
+/* Modern Select Dropdown Styles */
+.form-select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23fb923c' stroke-width='2'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem 1.25rem;
+  padding-right: 3rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'ObjectSans', sans-serif;
+  appearance: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.form-select:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ea580c' stroke-width='2.5'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M5 15l7-7 7 7'/%3e%3c/svg%3e");
+}
+
+/* Custom Select Option Styling */
+.form-select option {
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #ffffff;
+}
+
+.form-select option:hover {
+  background-color: #f9fafb;
+}
+
+.form-select option:checked {
+  background-color: var(--orange-primary);
+  color: white;
+}
+
+/* Date Input Styles */
+.form-date {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  font-family: 'ObjectSans', sans-serif;
+  position: relative;
+}
+
+.form-date:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+}
+
+/* Enhanced Calendar Icon for Date Inputs */
+.form-date::-webkit-calendar-picker-indicator {
+  color: var(--orange-primary);
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px;
+  margin-right: 4px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23fb923c'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
+
+.form-date::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(251, 146, 60, 0.1);
+  transform: scale(1.05);
+}
+
+/* Custom Date Picker Styling */
+.form-date::-webkit-datetime-edit {
+  padding: 0;
+}
+
+.form-date::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+.form-date::-webkit-datetime-edit-text {
+  color: #6b7280;
+  padding: 0 0.25rem;
+}
+
+.form-date::-webkit-datetime-edit-month-field,
+.form-date::-webkit-datetime-edit-day-field,
+.form-date::-webkit-datetime-edit-year-field {
+  color: #1f2937;
+  font-weight: 500;
+  padding: 0 0.125rem;
+  border-radius: 2px;
+}
+
+.form-date::-webkit-datetime-edit-month-field:focus,
+.form-date::-webkit-datetime-edit-day-field:focus,
+.form-date::-webkit-datetime-edit-year-field:focus {
+  background-color: rgba(251, 146, 60, 0.1);
+  outline: none;
+}
+
+/* Booking Widget Container */
+.booking-widget {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+/* Booking Widget Grid */
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 200px;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+@media (max-width: 1024px) {
+  .booking-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .booking-grid .btn-booking-container {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .booking-widget {
+    padding: 1.5rem;
+  }
+
+  .booking-grid .btn-booking-container {
+    grid-column: 1;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .booking-widget {
+    padding: 1.5rem;
+  }
+}
+
+/* Enhanced Button for Booking Widget */
+.btn-booking {
+  background: linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-hover) 100%);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'ObjectSans', sans-serif;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-booking:hover {
+  background: linear-gradient(135deg, var(--orange-hover) 0%, var(--orange-active) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-booking:active {
+  transform: translateY(0);
+}
+
+/* Print styles */
+@media print {
+
+  .whatsapp-float,
+  .btn-primary,
+  .btn-secondary,
+  .btn-whatsapp {
+    display: none !important;
+  }
+}
+
+/* Cust
+om Date Picker Container */
+.custom-date-picker {
+  position: relative;
+  width: 100%;
+}
+
+.custom-date-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  padding-right: 3rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'ObjectSans', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.custom-date-input:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.custom-date-input:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.custom-date-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.date-picker-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--orange-primary);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.custom-date-input:focus+.date-picker-icon {
+  color: var(--orange-hover);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* React DatePicker Custom Styling */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+.react-datepicker {
+  font-family: 'ObjectSans', sans-serif;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.react-datepicker__header {
+  background-color: var(--orange-primary);
+  border-bottom: none;
+  border-radius: 0;
+  padding: 1rem;
+}
+
+.react-datepicker__current-month {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.react-datepicker__day-names {
+  margin-bottom: 0.5rem;
+}
+
+.react-datepicker__day-name {
+  color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.react-datepicker__navigation {
+  top: 1.2rem;
+}
+
+.react-datepicker__navigation--previous {
+  left: 1rem;
+  border-right-color: white;
+}
+
+.react-datepicker__navigation--next {
+  right: 1rem;
+  border-left-color: white;
+}
+
+.react-datepicker__navigation:hover *::before {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.react-datepicker__month-container {
+  background-color: white;
+}
+
+.react-datepicker__month {
+  padding: 1rem;
+  margin: 0;
+}
+
+.react-datepicker__day {
+  color: #374151;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  margin: 0.125rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  transition: all 0.2s ease;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(251, 146, 60, 0.1);
+  color: var(--orange-primary);
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--orange-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.react-datepicker__day--selected:hover {
+  background-color: var(--orange-hover);
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(251, 146, 60, 0.2);
+  color: var(--orange-primary);
+}
+
+.react-datepicker__day--today {
+  background-color: #f3f4f6;
+  color: var(--orange-primary);
+  font-weight: 600;
+}
+
+.react-datepicker__day--disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.react-datepicker__day--disabled:hover {
+  background-color: transparent;
+}
