@@ -479,74 +479,213 @@ const WhyChooseSection = () => {
   )
 }
 
-// Featured Rooms Section
+// Featured Rooms Section with Slider
 const FeaturedRoomsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsPerView, setItemsPerView] = useState(3)
+
   const rooms = [
     {
       name: 'Standard Single',
-      price: { bdt: 2700, usd: 23 },
-      image: '/api/placeholder/400/300',
-      features: ['Free WiFi', 'Air Conditioning', 'Smart TV', 'Mini Fridge']
+      image: '/standardsingle_1.webp'
     },
     {
-      name: 'Deluxe Double',
-      price: { bdt: 3500, usd: 30 },
-      image: '/api/placeholder/400/300',
-      features: ['King Size Bed', 'City View', 'Work Desk', 'Premium Amenities']
+      name: 'Standard Twin',
+      image: '/standardtwin_1.webp'
     },
     {
-      name: 'Super Deluxe',
-      price: { bdt: 4500, usd: 38 },
-      image: '/api/placeholder/400/300',
-      features: ['Spacious Layout', 'Seating Area', 'Premium Bathroom', 'Coffee Maker']
+      name: 'Standard Couple',
+      image: '/standardcouple_1.webp'
     },
     {
-      name: 'Green Deluxe',
-      price: { bdt: 5800, usd: 49 },
-      image: '/api/placeholder/400/300',
-      features: ['Garden View', 'Balcony', 'Luxury Amenities', 'Room Service']
+      name: 'Deluxe Single',
+      image: '/deluxsingle_1.webp'
+    },
+    {
+      name: 'Deluxe Twin',
+      image: '/deluxtwin_1.webp'
+    },
+    {
+      name: 'Deluxe Couple',
+      image: '/deluxcouple_1.webp'
+    },
+    {
+      name: 'Super Deluxe Twin',
+      image: '/superdeluxetwin_1.webp'
+    },
+    {
+      name: 'Super Deluxe Couple',
+      image: '/superdeluxecouple_1.webp'
+    },
+    {
+      name: 'Green Deluxe Twin',
+      image: '/greendeluxtwin_1.webp'
+    },
+    {
+      name: 'Green Deluxe Couple',
+      image: '/greendeluxcouple_1.webp'
+    },
+    {
+      name: 'Triple Beds Family Room',
+      image: '/triplebed_1.webp'
     }
   ]
 
+  // Handle responsive items per view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(1)
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2)
+      } else {
+        setItemsPerView(3)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Reset index when items per view changes
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [itemsPerView])
+
+  const maxIndex = Math.max(0, rooms.length - itemsPerView)
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
+  }
+
+  // Auto-advance slides
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 4000)
+    return () => clearInterval(interval)
+  }, [maxIndex])
+
   return (
-    <section className="py-20 bg-light-gray">
+    <section className="py-12 md:py-20 bg-light-gray">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-navy mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Our Comfortable Rooms
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg md:text-xl text-gray-600">
             Thoughtfully designed for your perfect stay
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {rooms.map((room, index) => (
-            <div key={index} className="bg-gray-200 rounded-lg overflow-hidden border hover:shadow-lg transition-shadow">
-              <div className="aspect-w-4 aspect-h-3 bg-gray-200">
-                <div className="w-full h-48 bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-500">Room Image</span>
+        {/* Slider Container */}
+        <div className="relative max-w-7xl mx-auto">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`
+              }}
+            >
+              {rooms.map((room, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 px-2 md:px-4"
+                  style={{ width: `${100 / itemsPerView}%` }}
+                >
+                  <div className="relative group overflow-hidden rounded-lg shadow-lg">
+                    {/* Room Image */}
+                    <div className="relative" style={{ aspectRatio: '16/9' }}>
+                      <img
+                        src={room.image}
+                        alt={room.name}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    </div>
+
+                    {/* Content Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white">
+                      <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 drop-shadow-lg">
+                        {room.name}
+                      </h3>
+                      <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
+                        <Link
+                          to="/contact"
+                          className="bg-orange hover:bg-orange-dark text-white px-4 md:px-6 py-2 md:py-3 rounded text-sm md:text-base font-semibold transition-all duration-300 hover:scale-105 text-center"
+                        >
+                          Book Now
+                        </Link>
+                        <Link
+                          to="/rooms"
+                          className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 md:px-6 py-2 md:py-3 rounded text-sm md:text-base font-semibold transition-all duration-300 border border-white/50 text-center"
+                        >
+                          View Room
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-navy mb-2">{room.name}</h3>
-                <div className="text-lg font-semibold text-orange mb-4">
-                  From BDT {room.price.bdt.toLocaleString()} / USD {room.price.usd}
-                </div>
-                <ul className="space-y-2 mb-6">
-                  {room.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <span className="text-green-500 mr-2">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/rooms" className="btn-primary w-full text-center">
-                  VIEW DETAILS
-                </Link>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          {rooms.length > itemsPerView && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 bg-navy/90 hover:bg-navy text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 shadow-lg"
+                aria-label="Previous rooms"
+              >
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 bg-navy/90 hover:bg-navy text-white p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110 z-10 shadow-lg"
+                aria-label="Next rooms"
+              >
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </>
+          )}
+
+          {/* Slide Indicators */}
+          {rooms.length > itemsPerView && (
+            <div className="flex justify-center mt-6 md:mt-8 space-x-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? 'bg-orange scale-125'
+                      : 'bg-gray-400 hover:bg-gray-500'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* View All Rooms Button */}
+        <div className="text-center mt-8 md:mt-12">
+          <Link
+            to="/rooms"
+            className="inline-block bg-navy hover:bg-navy-dark text-white px-8 md:px-12 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+          >
+            View All Rooms
+          </Link>
         </div>
       </div>
     </section>

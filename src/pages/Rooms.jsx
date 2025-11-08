@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Rooms = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedImages, setSelectedImages] = useState({})
 
   const roomsData = [
     // Standard Rooms
@@ -17,7 +18,7 @@ const Rooms = () => {
       bedType: 'Single bed',
       size: '250 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/standardsingle_1.webp', '/standardsingle_2.webp', '/standardsingle_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Private bathroom', 'Daily housekeeping'
@@ -35,7 +36,7 @@ const Rooms = () => {
       bedType: 'Twin beds',
       size: '280 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/standardtwin_1.webp', '/standardtwin_2.webp', '/standardtwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Private bathroom', 'Daily housekeeping'
@@ -53,7 +54,7 @@ const Rooms = () => {
       bedType: 'Double bed',
       size: '280 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/standardcouple_1.webp', '/standardcouple_2.webp', '/standardcouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Private bathroom', 'Daily housekeeping'
@@ -72,7 +73,7 @@ const Rooms = () => {
       bedType: 'Queen bed',
       size: '300 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/deluxsingle_1.webp', '/deluxsingle_2.webp', '/deluxsingle_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Premium bathroom', 'Daily housekeeping'
@@ -90,7 +91,7 @@ const Rooms = () => {
       bedType: 'Twin beds',
       size: '320 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/deluxtwin_1.webp', '/deluxtwin_2.webp', '/deluxtwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Premium bathroom', 'Daily housekeeping'
@@ -108,7 +109,7 @@ const Rooms = () => {
       bedType: 'King bed',
       size: '320 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/deluxcouple_1.webp', '/deluxcouple_2.webp', '/deluxcouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Premium bathroom', 'Daily housekeeping'
@@ -127,7 +128,7 @@ const Rooms = () => {
       bedType: 'Twin beds',
       size: '350 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/superdeluxetwin_1.webp', '/superdeluxetwin_2.webp', '/superdeluxetwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Seating area', 'Premium bathroom', 'Daily housekeeping'
@@ -145,7 +146,7 @@ const Rooms = () => {
       bedType: 'King bed',
       size: '350 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/superdeluxecouple_1.webp', '/superdeluxecouple_2.webp', '/superdeluxecouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Seating area', 'Premium bathroom', 'Daily housekeeping'
@@ -164,7 +165,7 @@ const Rooms = () => {
       bedType: 'Twin beds',
       size: '380 sq ft',
       view: 'Garden view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/greendeluxtwin_1.webp', '/greendeluxtwin_2.webp', '/greendeluxtwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Balcony', 'Garden view', 'Premium bathroom', 'Daily housekeeping'
@@ -182,7 +183,7 @@ const Rooms = () => {
       bedType: 'King bed',
       size: '380 sq ft',
       view: 'Garden view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/greendeluxcouple_1.webp', '/greendeluxcouple_2.webp', '/greendeluxcouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Balcony', 'Garden view', 'Premium bathroom', 'Daily housekeeping'
@@ -201,7 +202,7 @@ const Rooms = () => {
       bedType: 'Triple beds',
       size: '420 sq ft',
       view: 'City view',
-      images: ['/api/placeholder/600/400'],
+      images: ['/triplebed_1.webp', '/triplebed_2.webp', '/triplebed_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
         'Coffee/tea maker', 'Work desk', 'Extra space', 'Family bathroom', 'Daily housekeeping'
@@ -227,12 +228,12 @@ const Rooms = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
-      <section className="bg-navy text-white py-20">
+      <section className="bg-navy text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Comfort in Every Detail
           </h1>
-          <nav className="text-gray-300">
+          <nav className="text-sm md:text-base text-gray-300">
             <Link to="/" className="hover:text-orange">Home</Link> 
             <span className="mx-2">&gt;</span> 
             <span>Rooms</span>
@@ -241,14 +242,14 @@ const Rooms = () => {
       </section>
 
       {/* Room Categories Filter */}
-      <section className="py-8 bg-elegant-cream">
+      <section className="py-6 md:py-8 bg-elegant-cream">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {categories.map(category => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-colors ${
+                className={`px-4 md:px-6 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${
                   selectedCategory === category.id
                     ? 'bg-orange text-white'
                     : 'bg-gray-200 text-navy hover:bg-orange hover:text-white'
@@ -261,72 +262,38 @@ const Rooms = () => {
         </div>
       </section>
 
-      {/* Room Comparison Table */}
-      <section className="py-12 bg-gray-200">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-navy text-center mb-8">Room Comparison</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-gray-300">
-              <thead>
-                <tr className="bg-navy text-white">
-                  <th className="border border-gray-300 px-4 py-3 text-left">Room Type</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">Size</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">Bed Type</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">Capacity</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">View</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">Price (BDT)</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">Price (USD)</th>
-                  <th className="border border-gray-300 px-4 py-3 text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {roomsData.map((room, index) => (
-                  <tr key={room.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
-                    <td className="border border-gray-300 px-4 py-3 font-medium">{room.name}</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">{room.size}</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">{room.bedType}</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">{room.capacity}</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">{room.view}</td>
-                    <td className="border border-gray-300 px-4 py-3 text-center font-semibold">
-                      {room.priceBDT.toLocaleString()}++
-                    </td>
-                    <td className="border border-gray-300 px-4 py-3 text-center font-semibold">
-                      ${room.priceUSD}
-                    </td>
-                    <td className="border border-gray-300 px-4 py-3 text-center">
-                      <button className="btn-primary text-sm px-4 py-2">
-                        VIEW DETAILS
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* Detailed Room Sections */}
-      <section className="py-20">
+      <section className="py-8 md:py-20">
         {filteredRooms.map((room, index) => (
-          <div key={room.id} className={`py-16 ${index % 2 === 0 ? 'bg-gray-200' : 'bg-light-gray'}`}>
+          <div key={room.id} className={`py-8 md:py-16 ${index % 2 === 0 ? 'bg-gray-200' : 'bg-light-gray'}`}>
             <div className="container mx-auto px-4">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center ${
                 index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
               }`}>
                 {/* Image Gallery */}
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="aspect-w-16 aspect-h-9">
-                    <div className="w-full h-80 bg-gray-300 rounded-lg flex items-center justify-center">
-                      <span className="text-gray-500">{room.name} Image</span>
-                    </div>
+                  <div className="w-full" style={{ aspectRatio: '16/9' }}>
+                    <img 
+                      src={selectedImages[room.id] || room.images[0]} 
+                      alt={room.name}
+                      className="w-full h-full object-cover rounded-lg shadow-lg"
+                    />
                   </div>
-                  <div className="grid grid-cols-4 gap-2 mt-4">
-                    {[1,2,3,4].map(i => (
-                      <div key={i} className="aspect-w-4 aspect-h-3">
-                        <div className="w-full h-16 bg-gray-200 rounded flex items-center justify-center">
-                          <span className="text-xs text-gray-400">{i}</span>
-                        </div>
+                  <div className="grid grid-cols-3 gap-2 mt-3 md:mt-4">
+                    {room.images.map((img, i) => (
+                      <div 
+                        key={i} 
+                        className="cursor-pointer overflow-hidden rounded"
+                        style={{ aspectRatio: '16/9' }}
+                        onClick={() => setSelectedImages({...selectedImages, [room.id]: img})}
+                      >
+                        <img 
+                          src={img} 
+                          alt={`${room.name} ${i + 1}`}
+                          className={`w-full h-full object-cover transition-opacity ${
+                            (selectedImages[room.id] || room.images[0]) === img ? 'opacity-100 ring-2 ring-orange' : 'opacity-70 hover:opacity-100'
+                          }`}
+                        />
                       </div>
                     ))}
                   </div>
@@ -334,18 +301,18 @@ const Rooms = () => {
 
                 {/* Details Panel */}
                 <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <h3 className="text-3xl font-bold text-navy mb-4">{room.name}</h3>
-                  <div className="text-2xl font-bold text-orange mb-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-navy mb-3 md:mb-4">{room.name}</h3>
+                  <div className="text-xl md:text-2xl font-bold text-orange mb-3 md:mb-4">
                     From BDT {room.priceBDT.toLocaleString()}++ / USD ${room.priceUSD} per night
                   </div>
-                  <p className="text-gray-700 mb-6">{room.description}</p>
+                  <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6">{room.description}</p>
 
                   {/* Perfect For Tags */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-navy mb-2">Perfect for:</h4>
+                  <div className="mb-4 md:mb-6">
+                    <h4 className="text-sm md:text-base font-semibold text-navy mb-2">Perfect for:</h4>
                     <div className="flex flex-wrap gap-2">
                       {room.idealFor.map((tag, idx) => (
-                        <span key={idx} className="bg-elegant-cream text-navy px-3 py-1 rounded-full text-sm">
+                        <span key={idx} className="bg-elegant-cream text-navy px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
                           {tag}
                         </span>
                       ))}
@@ -353,28 +320,28 @@ const Rooms = () => {
                   </div>
 
                   {/* Amenities Grid */}
-                  <div className="mb-8">
-                    <h4 className="font-semibold text-navy mb-4">Amenities</h4>
-                    <div className="grid grid-cols-2 gap-2">
+                  <div className="mb-6 md:mb-8">
+                    <h4 className="text-sm md:text-base font-semibold text-navy mb-3 md:mb-4">Amenities</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {room.amenities.map((amenity, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-700">
-                          <CheckCircle className="text-dhaka-green mr-2" size={16} />
-                          {amenity}
+                        <div key={idx} className="flex items-center text-xs md:text-sm text-gray-700">
+                          <CheckCircle className="text-dhaka-green mr-2 flex-shrink-0" size={16} />
+                          <span>{amenity}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link to="/contact" className="btn-primary flex-1 text-center">
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                    <Link to="/contact" className="btn-primary flex-1 text-center text-sm md:text-base py-3">
                       BOOK THIS ROOM
                     </Link>
-                    <Link to="/contact" className="btn-secondary flex-1 text-center">
+                    <Link to="/contact" className="btn-secondary flex-1 text-center text-sm md:text-base py-3">
                       CHECK AVAILABILITY
                     </Link>
                   </div>
-                  <p className="text-sm text-gray-600 mt-4">
+                  <p className="text-xs md:text-sm text-gray-600 mt-3 md:mt-4 text-center sm:text-left">
                     Call to inquire: <a href="tel:+8801828183920" className="text-orange hover:underline">+880 1828-183920</a>
                   </p>
                 </div>
@@ -384,11 +351,50 @@ const Rooms = () => {
         ))}
       </section>
 
-      {/* Room Policies */}
-      <section className="py-20 bg-elegant-cream">
+      {/* Room Comparison Table */}
+      <section className="py-8 md:py-12 bg-gray-200">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-navy text-center mb-12">Room Policies</h2>
-          <div className="max-w-4xl mx-auto space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-6 md:mb-8">Room Comparison</h2>
+          <div className="overflow-x-auto -mx-4 px-4">
+            <table className="w-full border-collapse border border-gray-300 min-w-[800px]">
+              <thead>
+                <tr className="bg-navy text-white">
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-left text-xs md:text-base">Room Type</th>
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Size</th>
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Bed Type</th>
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Capacity</th>
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">View</th>
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Price (BDT)</th>
+                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Price (USD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {roomsData.map((room, index) => (
+                  <tr key={room.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-medium text-xs md:text-base">{room.name}</td>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.size}</td>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.bedType}</td>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.capacity}</td>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.view}</td>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-semibold text-xs md:text-sm">
+                      {room.priceBDT.toLocaleString()}++
+                    </td>
+                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-semibold text-xs md:text-sm">
+                      ${room.priceUSD}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Room Policies */}
+      <section className="py-12 md:py-20 bg-elegant-cream">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-8 md:mb-12">Room Policies</h2>
+          <div className="max-w-4xl mx-auto space-y-3 md:space-y-4">
             {[
               {
                 title: 'Check-in/Check-out Times',
@@ -411,9 +417,9 @@ const Rooms = () => {
                 content: 'Special rates available for corporate bookings and group reservations. Long stay discounts offered.'
               }
             ].map((policy, index) => (
-              <div key={index} className="bg-gray-200 rounded-lg p-6">
-                <h3 className="font-bold text-navy mb-2">{policy.title}</h3>
-                <p className="text-gray-700">{policy.content}</p>
+              <div key={index} className="bg-gray-200 rounded-lg p-4 md:p-6">
+                <h3 className="text-sm md:text-base font-bold text-navy mb-2">{policy.title}</h3>
+                <p className="text-xs md:text-base text-gray-700">{policy.content}</p>
               </div>
             ))}
           </div>
@@ -421,17 +427,17 @@ const Rooms = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-navy text-white text-center">
+      <section className="py-12 md:py-20 bg-navy text-white text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-4">Ready to Experience Comfort?</h2>
-          <p className="text-xl text-gray-300 mb-8">Book your perfect room today</p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
-            <Link to="/contact" className="btn-primary px-8 py-4 text-lg">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Ready to Experience Comfort?</h2>
+          <p className="text-base md:text-xl text-gray-300 mb-6 md:mb-8">Book your perfect room today</p>
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-stretch md:items-center max-w-2xl mx-auto">
+            <Link to="/contact" className="btn-primary px-6 md:px-8 py-3 md:py-4 text-base md:text-lg w-full md:w-auto">
               BOOK NOW
             </Link>
             <a 
               href="tel:+8801828183920" 
-              className="btn-secondary px-8 py-4 text-lg border-white text-white hover:bg-white hover:text-navy"
+              className="btn-secondary px-6 md:px-8 py-3 md:py-4 text-base md:text-lg border-white text-white hover:bg-white hover:text-navy w-full md:w-auto"
             >
               CALL: +880 1828-183920
             </a>
