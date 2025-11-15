@@ -240,9 +240,28 @@ const Contact = () => {
             <div>
               <h2 className="text-3xl font-bold text-navy mb-8">Location & Directions</h2>
               
-              {/* Map Placeholder */}
-              <div className="bg-gray-300 h-64 rounded-lg mb-8 flex items-center justify-center">
-                <span className="text-gray-600">Interactive Google Maps</span>
+              {/* Google Map */}
+              <div className="rounded-lg mb-8 overflow-hidden shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14609.826956489384!2d90.4123457!3d23.7456789!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b86144d797b7%3A0xdf08350578b0c0dc!2sHotel%20Ashrafee!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                  width="100%"
+                  height="320"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Hotel Ashrafee Location"
+                ></iframe>
+                <div className="bg-navy p-3 text-center">
+                  <a
+                    href="https://www.google.com/travel/search?ts=CAEaSQopEicyJTB4Mzc1NWI4NjE0NGQ3OTdiNzoweGRmMDgzNTA1NzhiMGMwZGMSHBIUCgcI6Q8QCxgVEgcI6Q8QCxgWGAEyBAgAEAAqBwoFOgNCRFQ&qs=CAEyJkNoZ0kzSUhEeGRlZ2pZVGZBUm9MTDJjdk1YUmtNRGc0ZURjUUFROAJCCQncwLB4BTUI30IJCdzAsHgFNQjf&utm_campaign=sharing&utm_medium=link_btn&utm_source=htls"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-orange transition-colors text-sm font-medium"
+                  >
+                    View on Google Maps →
+                  </a>
+                </div>
               </div>
 
               {/* Address */}

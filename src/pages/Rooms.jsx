@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Wifi, Tv, Snowflake, Coffee, Car, Users, Bed, Eye, CheckCircle } from 'lucide-react'
+import { Wifi, Tv, Snowflake, Coffee, Car, Users, Bed, Eye, CheckCircle, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Rooms = () => {
@@ -16,12 +16,15 @@ const Rooms = () => {
       priceUSD: 23,
       capacity: 1,
       bedType: 'Single bed',
-      size: '250 sq ft',
+      size: '180 sq ft',
       view: 'City view',
       images: ['/standardsingle_1.webp', '/standardsingle_2.webp', '/standardsingle_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Private bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Private bathroom'
       ],
       description: 'Perfect for solo travelers seeking comfort and value in the heart of Dhaka.',
       idealFor: ['Business travelers', 'Solo tourists', 'Budget-conscious guests']
@@ -34,12 +37,15 @@ const Rooms = () => {
       priceUSD: 29,
       capacity: 2,
       bedType: 'Twin beds',
-      size: '280 sq ft',
+      size: '200 sq ft',
       view: 'City view',
       images: ['/standardtwin_1.webp', '/standardtwin_2.webp', '/standardtwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Private bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Private bathroom'
       ],
       description: 'Comfortable twin bed accommodation ideal for friends or colleagues traveling together.',
       idealFor: ['Friends', 'Colleagues', 'Family with children']
@@ -52,12 +58,15 @@ const Rooms = () => {
       priceUSD: 29,
       capacity: 2,
       bedType: 'Double bed',
-      size: '280 sq ft',
+      size: '200 sq ft',
       view: 'City view',
       images: ['/standardcouple_1.webp', '/standardcouple_2.webp', '/standardcouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Private bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Private bathroom'
       ],
       description: 'Cozy double bed room perfect for couples seeking affordable comfort.',
       idealFor: ['Couples', 'Honeymooners', 'Weekend getaways']
@@ -71,12 +80,15 @@ const Rooms = () => {
       priceUSD: 25,
       capacity: 1,
       bedType: 'Queen bed',
-      size: '300 sq ft',
+      size: '220 sq ft',
       view: 'City view',
       images: ['/deluxsingle_1.webp', '/deluxsingle_2.webp', '/deluxsingle_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Premium bathroom'
       ],
       description: 'Enhanced single accommodation with premium amenities and extra space.',
       idealFor: ['Business executives', 'Extended stays', 'Comfort seekers']
@@ -89,12 +101,15 @@ const Rooms = () => {
       priceUSD: 32,
       capacity: 2,
       bedType: 'Twin beds',
-      size: '320 sq ft',
+      size: '240 sq ft',
       view: 'City view',
       images: ['/deluxtwin_1.webp', '/deluxtwin_2.webp', '/deluxtwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Premium bathroom'
       ],
       description: 'Spacious twin room with enhanced amenities for a superior stay experience.',
       idealFor: ['Business partners', 'Friends', 'Family travelers']
@@ -107,12 +122,15 @@ const Rooms = () => {
       priceUSD: 32,
       capacity: 2,
       bedType: 'King bed',
-      size: '320 sq ft',
+      size: '240 sq ft',
       view: 'City view',
       images: ['/deluxcouple_1.webp', '/deluxcouple_2.webp', '/deluxcouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Premium bathroom'
       ],
       description: 'Elegant king bed room with premium amenities for discerning couples.',
       idealFor: ['Couples', 'Anniversary celebrations', 'Special occasions']
@@ -126,12 +144,15 @@ const Rooms = () => {
       priceUSD: 35,
       capacity: 2,
       bedType: 'Twin beds',
-      size: '350 sq ft',
+      size: '280 sq ft',
       view: 'City view',
       images: ['/superdeluxetwin_1.webp', '/superdeluxetwin_2.webp', '/superdeluxetwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Seating area', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Seating area', 'Premium bathroom'
       ],
       description: 'Luxurious twin accommodation with separate seating area and premium finishes.',
       idealFor: ['VIP guests', 'Extended business stays', 'Comfort enthusiasts']
@@ -144,12 +165,15 @@ const Rooms = () => {
       priceUSD: 35,
       capacity: 2,
       bedType: 'King bed',
-      size: '350 sq ft',
+      size: '280 sq ft',
       view: 'City view',
       images: ['/superdeluxecouple_1.webp', '/superdeluxecouple_2.webp', '/superdeluxecouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Seating area', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Seating area', 'Premium bathroom'
       ],
       description: 'Premium king bed suite with separate seating area for ultimate comfort.',
       idealFor: ['Luxury seekers', 'Special celebrations', 'VIP couples']
@@ -163,12 +187,15 @@ const Rooms = () => {
       priceUSD: 38,
       capacity: 2,
       bedType: 'Twin beds',
-      size: '380 sq ft',
+      size: '300 sq ft',
       view: 'Garden view',
       images: ['/greendeluxtwin_1.webp', '/greendeluxtwin_2.webp', '/greendeluxtwin_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Balcony', 'Garden view', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Balcony', 'Garden view', 'Premium bathroom'
       ],
       description: 'Our finest twin accommodation with private balcony and serene garden views.',
       idealFor: ['Nature lovers', 'Peaceful retreats', 'Premium travelers']
@@ -181,12 +208,15 @@ const Rooms = () => {
       priceUSD: 38,
       capacity: 2,
       bedType: 'King bed',
-      size: '380 sq ft',
+      size: '300 sq ft',
       view: 'Garden view',
       images: ['/greendeluxcouple_1.webp', '/greendeluxcouple_2.webp', '/greendeluxcouple_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Balcony', 'Garden view', 'Premium bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Balcony', 'Garden view', 'Premium bathroom'
       ],
       description: 'Premium king suite with private balcony overlooking peaceful garden areas.',
       idealFor: ['Romantic getaways', 'Honeymoons', 'Luxury couples']
@@ -200,15 +230,39 @@ const Rooms = () => {
       priceUSD: 49,
       capacity: 3,
       bedType: 'Triple beds',
-      size: '420 sq ft',
+      size: '350 sq ft',
       view: 'City view',
       images: ['/triplebed_1.webp', '/triplebed_2.webp', '/triplebed_3.webp'],
       amenities: [
         'Free WiFi', 'Smart TV', 'Air conditioning', 'Mini refrigerator',
-        'Coffee/tea maker', 'Work desk', 'Extra space', 'Family bathroom', 'Daily housekeeping'
+        'Welcome Drinks', 'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Wake up Calls', 'Guest Amenities', 'Complimentary Breakfast',
+        'Attached Washroom', '24 hrs Concierge', '24 hrs Room Service',
+        'AC Rooms', 'Laundry Service', 'Access Control Floor', 'Work desk', 'Extra space', 'Family bathroom'
       ],
       description: 'Spacious family room with three beds, perfect for families or groups traveling together.',
       idealFor: ['Families', 'Group travelers', 'Extended stays']
+    },
+    // Driver Room
+    {
+      id: 'driver-room',
+      name: 'Driver Room',
+      category: 'standard',
+      priceBDT: 1500,
+      priceUSD: 13,
+      capacity: 1,
+      bedType: 'Single bed',
+      size: '120 sq ft',
+      view: 'City view',
+      images: ['/standardsingle_1.webp', '/standardsingle_2.webp', '/standardsingle_3.webp'],
+      amenities: [
+        'Daily Housekeeping Services', 'Tea-Coffee Set up',
+        'Attached Washroom', '24 hrs Concierge',
+        'AC Rooms', 'Access Control Floor'
+      ],
+      description: 'Comfortable and affordable accommodation designed specifically for drivers.',
+      idealFor: ['Drivers', 'Budget travelers', 'Short stays'],
+      isPrimary: true
     }
   ]
 
@@ -301,7 +355,14 @@ const Rooms = () => {
 
                 {/* Details Panel */}
                 <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <h3 className="text-2xl md:text-3xl font-bold text-navy mb-3 md:mb-4">{room.name}</h3>
+                  <div className="flex items-center gap-3 mb-3 md:mb-4">
+                    <h3 className="text-2xl md:text-3xl font-bold text-navy">{room.name}</h3>
+                    {room.isPrimary && (
+                      <span className="bg-orange text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        PRIMARY ROOM
+                      </span>
+                    )}
+                  </div>
                   <div className="text-xl md:text-2xl font-bold text-orange mb-3 md:mb-4">
                     From BDT {room.priceBDT.toLocaleString()}++ / USD ${room.priceUSD} per night
                   </div>
@@ -422,6 +483,86 @@ const Rooms = () => {
                 <p className="text-xs md:text-base text-gray-700">{policy.content}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Steps */}
+      <section className="py-12 md:py-20 bg-light-gray">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-8 md:mb-12">How to Book Your Stay</h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
+              <div className="text-center">
+                <div className="bg-orange text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-4">1</div>
+                <h3 className="text-base md:text-lg font-bold text-navy mb-2">Choose Your Room</h3>
+                <p className="text-xs md:text-sm text-gray-600">Browse our room categories and select the perfect one for your needs</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-orange text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-4">2</div>
+                <h3 className="text-base md:text-lg font-bold text-navy mb-2">Contact Us</h3>
+                <p className="text-xs md:text-sm text-gray-600">Call +880 1828-183920 or WhatsApp us to check availability</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-orange text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-4">3</div>
+                <h3 className="text-base md:text-lg font-bold text-navy mb-2">Confirm Details</h3>
+                <p className="text-xs md:text-sm text-gray-600">Provide your check-in/out dates and guest information</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-orange text-white w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-4">4</div>
+                <h3 className="text-base md:text-lg font-bold text-navy mb-2">Enjoy Your Stay</h3>
+                <p className="text-xs md:text-sm text-gray-600">Check-in at 4:00 AM and experience our hospitality</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Guest Reviews */}
+      <section className="py-12 md:py-20 bg-elegant-cream">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-8 md:mb-12">What Our Guests Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <div className="bg-gray-200 p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="flex text-orange">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm md:text-base text-gray-700 mb-4 italic">"Excellent service and comfortable rooms. The staff was very friendly and helpful. Will definitely come back!"</p>
+              <div className="font-semibold text-navy">- Ahmed Rahman</div>
+              <div className="text-xs text-gray-600">Business Traveler</div>
+            </div>
+            <div className="bg-gray-200 p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="flex text-orange">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm md:text-base text-gray-700 mb-4 italic">"Great location and value for money. The restaurant food was amazing. Highly recommended for families."</p>
+              <div className="font-semibold text-navy">- Fatima Khan</div>
+              <div className="text-xs text-gray-600">Family Vacation</div>
+            </div>
+            <div className="bg-gray-200 p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="flex text-orange">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm md:text-base text-gray-700 mb-4 italic">"Clean rooms, good amenities, and excellent hospitality. The Green Deluxe room with balcony was perfect!"</p>
+              <div className="font-semibold text-navy">- Karim Hossain</div>
+              <div className="text-xs text-gray-600">Couple Getaway</div>
+            </div>
+          </div>
+          <div className="text-center mt-8 md:mt-12">
+            <div className="text-3xl md:text-4xl font-bold text-orange mb-2">50,000+</div>
+            <div className="text-base md:text-lg text-gray-600">Happy Guests Since 1990</div>
           </div>
         </div>
       </section>

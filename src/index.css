@@ -12,11 +12,11 @@
 
 /* CSS Custom Properties for Brand Colors */
 :root {
-  /* Primary Navy Colors */
-  --navy-primary: #041749;
-  --navy-dark: #040813;
-  --navy-light: #1e293b;
-  --navy-darker: #0f172a;
+  /* Primary Bottle Green Colors */
+  --navy-primary: #006A4E;
+  --navy-dark: #004D38;
+  --navy-light: #008060;
+  --navy-darker: #003D2E;
 
   /* Secondary Orange Colors */
   --orange-primary: #fb923c;

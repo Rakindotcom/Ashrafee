@@ -7,23 +7,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Navy Blue - Primary backgrounds (using darker navy as default)
+        // Bottle Green - Primary backgrounds
         navy: {
-          50: '#f0f4f8',
-          100: '#d9e2ec',
-          200: '#bcccdc',
-          300: '#9fb3c8',
-          400: '#829ab1',
-          500: '#627d98',
-          600: '#486581',
-          700: '#334e68',
-          800: '#243b53',
-          900: '#0f172a', // Primary navy (darker)
-          950: '#0a0f1e', // Even darker navy
-          DEFAULT: '#0f172a', // Use darker navy as default
-          dark: '#0a0f1e',
-          light: '#1e293b',
-          darker: '#0f172a',
+          50: '#e6f7f3',
+          100: '#ccefe7',
+          200: '#99dfcf',
+          300: '#66cfb7',
+          400: '#33bf9f',
+          500: '#00af87',
+          600: '#008f6f',
+          700: '#006f57',
+          800: '#004f3f',
+          900: '#003D2E', // Primary bottle green (darker)
+          950: '#002D22', // Even darker bottle green
+          DEFAULT: '#006A4E', // Use bottle green as default
+          dark: '#004D38',
+          light: '#008060',
+          darker: '#003D2E',
         },
         // Light Orange - Primary buttons/CTAs
         orange: {

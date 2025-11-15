@@ -44,9 +44,14 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © 2024 Hotel Ashrafee. All rights reserved.
-          </p>
+          <div className="text-center md:text-left">
+            <p className="text-gray-400 text-sm">
+              © 2025 Hotel Ashrafee. All rights reserved.
+            </p>
+            <p className="text-gray-500 text-xs mt-1">
+              Developed and maintained by <a href="https://www.404byte.com" target="_blank" rel="noopener noreferrer" className="text-orange hover:text-heritage-gold transition-colors">404Byte</a>
+            </p>
+          </div>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <span className="text-heritage-gold text-sm font-medium">Established 1990</span>
           </div>
