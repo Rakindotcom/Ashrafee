@@ -717,8 +717,8 @@ const RestaurantSection = () => {
 
           {/* Content */}
           <div>
-            <h2 className="text-4xl font-bold mb-4">Aahelee Restaurant</h2>
-            <p className="text-xl text-gray-200 mb-6">A Culinary Journey Through Asia</p>
+            <h2 className="text-4xl font-bold mb-4">Restaurant Service</h2>
+            <p className="text-xl text-gray-200 mb-6">Aahelee</p>
             <p className="text-gray-300 mb-8">
               Experience authentic flavors from four distinct cuisines with over 400 carefully crafted dishes.
               From spicy Thai curries to traditional Bangladeshi favorites, our chefs bring you the best of Asian cuisine.

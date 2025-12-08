@@ -138,6 +138,14 @@ h4 {
   background-color: var(--navy-dark);
 }
 
+.bg-navy-darker {
+  background-color: var(--navy-darker);
+}
+
+.bg-navy-950 {
+  background-color: #002D22;
+}
+
 .bg-orange {
   background-color: var(--orange-primary);
 }

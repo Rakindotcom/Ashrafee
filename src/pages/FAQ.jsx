@@ -26,8 +26,8 @@ const FAQ = () => {
       answer: 'Yes, free parking is available for all hotel guests on a first-come, first-served basis.'
     },
     {
-      question: 'Is the restaurant halal certified?',
-      answer: 'Yes, our Aahelee Restaurant is halal certified and serves authentic Asian cuisine with vegetarian options.'
+      question: 'Is the restaurant healthy?',
+      answer: 'Yes, our Aahelee Restaurant is healthy and serves authentic Asian cuisine with vegetarian options.'
     },
     {
       question: 'Can I cancel or modify my booking?',

@@ -9,12 +9,12 @@ const Restaurant = () => {
 
   // Featured Best Selling Items
   const featuredItems = [
-    { name: 'Aahelee Special Salad', price: 695, description: 'Chicken, Prawn with Mushroom' },
-    { name: 'Aahelee Special Soup', price: 695, description: 'Chicken, Prawn, Fish & Mushroom' },
-    { name: 'Gai Tod', price: 785, description: 'Fried Spring Chicken' },
-    { name: 'Thai Soup', price: 615, description: 'Authentic Thai flavors' },
-    { name: 'Chicken Fried Rice', price: 500, description: 'Wok-fried with vegetables' },
-    { name: 'Beef Bhoona', price: 465, description: 'Traditional Bangladeshi style' }
+    { name: 'Ashrafee Special Salad', description: 'Chicken, Prawn with Mushroom' },
+    { name: 'Ashrafee Special Soup', description: 'Chicken, Prawn, Fish & Mushroom' },
+    { name: 'Gai Tod', description: 'Fried Spring Chicken' },
+    { name: 'Thai Soup', description: 'Authentic Thai flavors' },
+    { name: 'Chicken Fried Rice', description: 'Wok-fried with vegetables' },
+    { name: 'Beef Bhoona', description: 'Traditional Bangladeshi style' }
   ]
 
   // Sample menu data (abbreviated for brevity)
@@ -28,13 +28,13 @@ const Restaurant = () => {
         { code: '0005', name: 'FRIED CHICKEN WINGS', description: 'Crispy chicken wings', price: 500 }
       ],
       salads: [
-        { code: '0010', name: 'AAHELEE SPECIAL SALAD', description: 'Chicken, Prawn with Mushroom', price: 695 },
+        { code: '0010', name: 'ASHRAFEE SPECIAL SALAD', description: 'Chicken, Prawn with Mushroom', price: 695 },
         { code: '0011', name: 'LAAB GAI', description: 'Chicken with onion, Lemon Juice and Other Spices', price: 600 },
         { code: '0012', name: 'YAM THALE', description: 'Mixed Sea Food Salad', price: 505 },
         { code: '0013', name: 'SOMTHUM/THUMMTHANG', description: 'Papaya/Cucumber Salad', price: 375 }
       ],
       soups: [
-        { code: '0015', name: 'AAHELEE SPECIAL SOUP', description: 'Chicken, Prawn, Fish & Mushroom', price: 695 },
+        { code: '0015', name: 'ASHRAFEE SPECIAL SOUP', description: 'Chicken, Prawn, Fish & Mushroom', price: 695 },
         { code: '0016', name: 'TOM YAM PLA/GAI/GOONG', description: 'Chicken/Prawn/Fish Thai soup with Mushroom', price: 615 },
         { code: '0017', name: 'TOM KHA THALE', description: 'Sea food soup with Coconut Milk', price: 560 },
         { code: '0018', name: 'TOM YAM THALE', description: 'Sea Food-Clear', price: 485 }
@@ -113,8 +113,8 @@ const Restaurant = () => {
       {/* Hero Banner */}
       <section className="bg-navy text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Aahelee Restaurant</h1>
-          <p className="text-xl md:text-2xl mb-6 text-gray-200">A Culinary Journey Through Asia</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Restaurant Service</h1>
+          <p className="text-xl md:text-2xl mb-6 text-gray-200">Aahelee</p>
           <div className="text-lg">
             Call to reserve: <a href="tel:01978322743" className="text-orange hover:underline font-semibold">01978 322 743</a>
           </div>
@@ -161,7 +161,7 @@ const Restaurant = () => {
             </div>
 
             <div className="bg-elegant-cream p-6 rounded-lg">
-              <h3 className="font-bold text-navy mb-2">Opening Hours</h3>
+              <h3 className="font-bold text-navy mb-2">Business Hours</h3>
               <p className="text-gray-700">Restaurant: 6:00 AM - 11:00 PM | Room Service: 24 Hours</p>
             </div>
           </div>
@@ -181,7 +181,6 @@ const Restaurant = () => {
                 </div>
                 <p className="text-gray-600 mb-4">{item.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-orange">BDT {item.price}</span>
                   <button className="btn-primary text-sm px-4 py-2">Order Now</button>
                 </div>
               </div>
@@ -201,7 +200,7 @@ const Restaurant = () => {
               <button
                 key={cuisine.id}
                 onClick={() => setActiveTab(cuisine.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+                className={`px-6 py-3 rounded-lg font-medium transition-colors cursor-pointer ${
                   activeTab === cuisine.id
                     ? 'bg-orange text-white'
                     : 'bg-elegant-cream text-navy hover:bg-orange hover:text-white'
@@ -260,64 +259,44 @@ const Restaurant = () => {
       {/* Party Packages */}
       <section className="py-20 bg-navy text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Party Packages</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Chinese Party Menu */}
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-orange">Chinese Party Menu</h3>
-              <div className="space-y-4">
-                {[
-                  { name: 'Party Package 1', price: 880, serves: '4-6 people' },
-                  { name: 'Party Package 2', price: 890, serves: '4-6 people' },
-                  { name: 'Party Package 3', price: 915, serves: '6-8 people' },
-                  { name: 'Party Package 4', price: 850, serves: '4-6 people' },
-                  { name: 'Party Package 5', price: 965, serves: '6-8 people' },
-                  { name: 'Party Package 6', price: 955, serves: '6-8 people' },
-                  { name: 'Party Package 7', price: 975, serves: '8-10 people' }
-                ].map((pkg, index) => (
-                  <div key={index} className="bg-navy-light p-4 rounded-lg">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <h4 className="font-semibold">{pkg.name}</h4>
-                        <p className="text-gray-300 text-sm">Serves {pkg.serves}</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-orange">BDT {pkg.price}</div>
-                        <button className="text-orange hover:text-orange-hover text-sm">Inquire</button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+          <h2 className="text-3xl font-bold text-center mb-12">Party Menu Packages</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Chinese Party Menu Packages */}
+            {[
+              { name: 'Chinese Party Package 1', serves: '4-6 people' },
+              { name: 'Chinese Party Package 2', serves: '4-6 people' },
+              { name: 'Chinese Party Package 3', serves: '6-8 people' },
+              { name: 'Chinese Party Package 4', serves: '4-6 people' },
+              { name: 'Chinese Party Package 5', serves: '6-8 people' },
+              { name: 'Chinese Party Package 6', serves: '6-8 people' },
+              { name: 'Chinese Party Package 7', serves: '8-10 people' }
+            ].map((pkg, index) => (
+              <div key={index} className="bg-orange p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <h4 className="font-bold text-xl mb-2">{pkg.name}</h4>
+                <p className="text-white/90 mb-4">Serves {pkg.serves}</p>
+                <button className="bg-white text-orange px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                  Inquire Now
+                </button>
               </div>
-            </div>
+            ))}
 
-            {/* Bangla Party Menu */}
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-orange">Bangla Party Menu</h3>
-              <div className="space-y-4">
-                {[
-                  { name: 'Bangla Package 1', price: 870, serves: '4-6 people' },
-                  { name: 'Bangla Package 2', price: 950, serves: '6-8 people' },
-                  { name: 'Bangla Package 3', price: 1125, serves: '8-10 people' },
-                  { name: 'Bangla Package 4', price: 630, serves: '3-4 people' },
-                  { name: 'Bangla Package 5', price: 600, serves: '3-4 people' },
-                  { name: 'Bangla Package 6', price: 500, serves: '2-3 people' }
-                ].map((pkg, index) => (
-                  <div key={index} className="bg-navy-light p-4 rounded-lg">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <h4 className="font-semibold">{pkg.name}</h4>
-                        <p className="text-gray-300 text-sm">Serves {pkg.serves}</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-orange">BDT {pkg.price}</div>
-                        <button className="text-orange hover:text-orange-hover text-sm">Inquire</button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            {/* Bangla Party Menu Packages */}
+            {[
+              { name: 'Bangla Party Package 1', serves: '4-6 people' },
+              { name: 'Bangla Party Package 2', serves: '6-8 people' },
+              { name: 'Bangla Party Package 3', serves: '8-10 people' },
+              { name: 'Bangla Party Package 4', serves: '3-4 people' },
+              { name: 'Bangla Party Package 5', serves: '3-4 people' },
+              { name: 'Bangla Party Package 6', serves: '2-3 people' }
+            ].map((pkg, index) => (
+              <div key={index} className="bg-orange p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <h4 className="font-bold text-xl mb-2">{pkg.name}</h4>
+                <p className="text-white/90 mb-4">Serves {pkg.serves}</p>
+                <button className="bg-white text-orange px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                  Inquire Now
+                </button>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -352,9 +331,8 @@ const Restaurant = () => {
               <h3 className="font-bold text-navy mb-4">Dietary Accommodations</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• Vegetarian options available</li>
-                <li>• Halal certified kitchen</li>
+                <li>• Hygiene kitchen</li>
                 <li>• Spice levels customizable</li>
-                <li>• Allergy-friendly preparations</li>
               </ul>
             </div>
 
@@ -371,10 +349,29 @@ const Restaurant = () => {
         </div>
       </section>
 
+      {/* Home Delivery Box */}
+      <section className="py-20 bg-light-gray">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-orange text-white rounded-2xl p-12 text-center shadow-2xl">
+            <h2 className="text-4xl font-bold mb-4">Home Delivery Available</h2>
+            <p className="text-xl mb-8">Enjoy our delicious cuisine in the comfort of your home</p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+              <a 
+                href="tel:01978322743" 
+                className="bg-white text-orange px-8 py-4 text-lg font-bold rounded-full hover:bg-gray-100 transition-all flex items-center gap-2"
+              >
+                <Phone size={20} />
+                CALL TO ORDER: 01978 322 743
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-20 bg-navy text-white text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-4">Ready to Taste Asia?</h2>
+          <h2 className="text-4xl font-bold mb-4">Ready to Taste?</h2>
           <p className="text-xl text-gray-300 mb-8">Reserve your table or order room service now</p>
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
             <a 
