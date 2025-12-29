@@ -2,22 +2,22 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="bg-navy text-white py-16">
+    <footer className="bg-navy text-white py-6 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* About Column */}
           <div>
             <Link to="/">
-              <img src="/logo.png" alt="Hotel Ashrafee" className="h-40 w-auto mb-4" />
+              <img src="/logo.png" alt="Hotel Ashrafee" className="h-16 md:h-40 w-auto mb-2 md:mb-4" />
             </Link>
-            <p className="text-gray-300 mb-4">Your Home in Dhaka Since 1990</p>
-            <p className="text-sm text-gray-400">
+            <p className="text-gray-300 mb-4 text-sm md:text-base hidden md:block">Your Home in Dhaka Since 1990</p>
+            <p className="text-sm text-gray-400 hidden md:block">
               Experience comfort and heritage at Dhaka's trusted 3-star hotel.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
+          {/* Quick Links - Hidden on Mobile */}
+          <div className="hidden md:block">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-300">
               <li><Link to="/" className="hover:text-orange transition-colors">Home</Link></li>
@@ -31,19 +31,19 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <div className="space-y-2 text-gray-300 text-sm">
+            <h4 className="text-lg font-semibold mb-2 md:mb-4">Contact Info</h4>
+            <div className="space-y-1 md:space-y-2 text-gray-300 text-sm">
               <p>12 Outer Circular Road, Rajarbagh</p>
               <p>Dhaka, Bangladesh</p>
               <p>Phone: +880 1828-183920</p>
-              <p>Restaurant: 01978 322 743</p>
-              <p>Always Open (24/7)</p>
+              <p className="hidden md:block">Restaurant: 01978 322 743</p>
+              <p className="hidden md:block">Always Open (24/7)</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-700 mt-6 pt-4 md:mt-12 md:pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left">
             <p className="text-gray-400 text-sm">
               © 2025 Hotel Ashrafee. All rights reserved.
@@ -52,12 +52,12 @@ const Footer = () => {
               Developed and maintained by <a href="https://www.404byte.com" target="_blank" rel="noopener noreferrer" className="text-orange hover:text-heritage-gold transition-colors">404Byte</a>
             </p>
           </div>
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
+          <div className="flex items-center space-x-4 mt-2 md:mt-0 hidden md:flex">
             <span className="text-heritage-gold text-sm font-medium">Established 1990</span>
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }
 

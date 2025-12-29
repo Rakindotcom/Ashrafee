@@ -445,8 +445,8 @@ const Restaurant = () => {
                 key={cuisine.id}
                 onClick={() => setActiveTab(cuisine.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all ${activeTab === cuisine.id
-                    ? 'bg-orange text-white shadow-lg scale-105'
-                    : 'bg-white text-navy hover:bg-orange/10 border border-gray-200'
+                  ? 'bg-orange text-white shadow-lg scale-105'
+                  : 'bg-white text-navy hover:bg-orange/10 border border-gray-200'
                   }`}
               >
                 <span>{cuisine.name}</span>
@@ -510,7 +510,8 @@ const Restaurant = () => {
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
+              {/* Desktop View */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full bg-white rounded-lg shadow-sm">
                   <thead>
                     <tr className="bg-red-600 text-white">
@@ -538,6 +539,29 @@ const Restaurant = () => {
                   </tbody>
                 </table>
               </div>
+
+              {/* Mobile View */}
+              <div className="md:hidden grid grid-cols-1 gap-3">
+                {[
+                  { code: '0133', name: 'PARTY- 1 CHINESE', price: '880.00' },
+                  { code: '0134', name: 'PARTY- 2 CHINESE', price: '890.00' },
+                  { code: '0135', name: 'PARTY- 3 CHINESE', price: '915.00' },
+                  { code: '0136', name: 'PARTY- 4 CHINESE', price: '850.00' },
+                  { code: '0137', name: 'PARTY- 5 CHINESE', price: '965.00' },
+                  { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00' },
+                  { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00' }
+                ].map((pkg, index) => (
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-red-100 flex justify-between items-center">
+                    <div>
+                      <span className="text-xs text-red-500 font-mono bg-red-50 px-2 py-0.5 rounded">#{pkg.code}</span>
+                      <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
+                    </div>
+                    <div className="text-red-700 font-bold whitespace-nowrap ml-2">
+                      ৳{pkg.price}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Bangla Party Menu */}
@@ -549,7 +573,8 @@ const Restaurant = () => {
                 </div>
               </div>
 
-              <div className="overflow-x-auto">
+              {/* Desktop View */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full bg-white rounded-lg shadow-sm">
                   <thead>
                     <tr className="bg-green-600 text-white">
@@ -575,6 +600,28 @@ const Restaurant = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile View */}
+              <div className="md:hidden grid grid-cols-1 gap-3">
+                {[
+                  { code: '666', name: 'PARTY- 1 BANGLA', price: '870.00' },
+                  { code: '667', name: 'PARTY- 2 BANGLA', price: '950.00' },
+                  { code: '668', name: 'PARTY- 3 BANGLA', price: '1,125.00' },
+                  { code: '669', name: 'PARTY- 4 BANGLA', price: '630.00' },
+                  { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00' },
+                  { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00' }
+                ].map((pkg, index) => (
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-green-100 flex justify-between items-center">
+                    <div>
+                      <span className="text-xs text-green-600 font-mono bg-green-50 px-2 py-0.5 rounded">#{pkg.code}</span>
+                      <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
+                    </div>
+                    <div className="text-green-700 font-bold whitespace-nowrap ml-2">
+                      ৳{pkg.price}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 

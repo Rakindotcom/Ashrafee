@@ -11,8 +11,8 @@ const About = () => {
             34 Years of Dhaka Hospitality
           </h1>
           <nav className="text-gray-300">
-            <Link to="/" className="hover:text-orange">Home</Link> 
-            <span className="mx-2">&gt;</span> 
+            <Link to="/" className="hover:text-orange">Home</Link>
+            <span className="mx-2">&gt;</span>
             <span>About</span>
           </nav>
         </div>
@@ -24,9 +24,11 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Historical Image */}
             <div className="aspect-w-16 aspect-h-12">
-              <div className="w-full h-80 bg-elegant-cream rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Historical Hotel Photo (1990s)</span>
-              </div>
+              <img
+                src="/ashrafee.jpg"
+                alt="Historical Hotel Ashrafee"
+                className="w-full h-80 object-cover rounded-lg shadow-lg hover:scale-105 transition-transform duration-500"
+              />
             </div>
 
             {/* Story Content */}
@@ -35,14 +37,14 @@ const About = () => {
                 Since <span className="text-heritage-gold">1990</span>
               </h2>
               <p className="text-gray-700 mb-6 leading-relaxed">
-                Hotel Ashrafee began its journey in 1990 with a simple vision: to provide comfortable, 
-                affordable accommodation in the heart of Dhaka while maintaining the highest standards 
-                of hospitality. What started as a modest establishment has grown into one of Rajarbagh's 
+                Hotel Ashrafee began its journey in 1990 with a simple vision: to provide comfortable,
+                affordable accommodation in the heart of Dhaka while maintaining the highest standards
+                of hospitality. What started as a modest establishment has grown into one of Rajarbagh's
                 most trusted 3-star hotels.
               </p>
               <p className="text-gray-700 mb-8 leading-relaxed">
-                Over three decades, we've welcomed over 30,000 guests from around the world, 
-                building a reputation for reliability, comfort, and genuine Bangladeshi hospitality. 
+                Over three decades, we've welcomed over 30,000 guests from around the world,
+                building a reputation for reliability, comfort, and genuine Bangladeshi hospitality.
                 Our 70% return guest rate speaks to the lasting relationships we build with every visitor.
               </p>
 
@@ -103,7 +105,7 @@ const About = () => {
               <Award className="text-heritage-gold mb-4" size={48} />
               <h3 className="text-xl font-bold text-navy mb-4">Heritage & Trust</h3>
               <p className="text-gray-700">
-                34 years of consistent service and a 70% return guest rate demonstrate 
+                34 years of consistent service and a 70% return guest rate demonstrate
                 our commitment to excellence and reliability.
               </p>
             </div>
@@ -113,7 +115,7 @@ const About = () => {
               <MapPin className="text-heritage-gold mb-4" size={48} />
               <h3 className="text-xl font-bold text-navy mb-4">Strategic Location</h3>
               <p className="text-gray-700">
-                Prime Rajarbagh location with 2-minute access to Kamlapur Railway Station 
+                Prime Rajarbagh location with 2-minute access to Kamlapur Railway Station
                 and walking distance to major business districts.
               </p>
             </div>
@@ -123,7 +125,7 @@ const About = () => {
               <Utensils className="text-heritage-gold mb-4" size={48} />
               <h3 className="text-xl font-bold text-navy mb-4">Culinary Excellence</h3>
               <p className="text-gray-700">
-                Aahelee Restaurant offers 400+ authentic dishes across Thai, Chinese, 
+                Aahelee Restaurant offers 400+ authentic dishes across Thai, Chinese,
                 Bangladeshi, and Indian cuisines.
               </p>
             </div>
@@ -133,7 +135,7 @@ const About = () => {
               <Award className="text-heritage-gold mb-4" size={48} />
               <h3 className="text-xl font-bold text-navy mb-4">Value for Money</h3>
               <p className="text-gray-700">
-                3-star comfort at honest prices, with rooms starting from BDT 2,700. 
+                3-star comfort at honest prices, with rooms starting from BDT 2,700.
                 Corporate and group discounts available.
               </p>
             </div>
@@ -143,7 +145,7 @@ const About = () => {
               <Users className="text-heritage-gold mb-4" size={48} />
               <h3 className="text-xl font-bold text-navy mb-4">Local Authenticity</h3>
               <p className="text-gray-700">
-                Experience genuine Bangladeshi hospitality while enjoying modern 
+                Experience genuine Bangladeshi hospitality while enjoying modern
                 amenities and international standards.
               </p>
             </div>
@@ -153,7 +155,7 @@ const About = () => {
               <Shield className="text-heritage-gold mb-4" size={48} />
               <h3 className="text-xl font-bold text-navy mb-4">Modern Comfort</h3>
               <p className="text-gray-700">
-                Updated facilities including free WiFi, smart TVs, air conditioning, 
+                Updated facilities including free WiFi, smart TVs, air conditioning,
                 and 24/7 room service for your convenience.
               </p>
             </div>
@@ -177,7 +179,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">Comfort Guarantee</h3>
               <p className="text-gray-300 text-sm">
-                Clean, comfortable rooms with quality bedding and climate control 
+                Clean, comfortable rooms with quality bedding and climate control
                 for a restful stay every time.
               </p>
             </div>
@@ -189,7 +191,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">Service Recovery Promise</h3>
               <p className="text-gray-300 text-sm">
-                If anything doesn't meet your expectations, we'll make it right 
+                If anything doesn't meet your expectations, we'll make it right
                 immediately with our 24/7 responsive service.
               </p>
             </div>
@@ -201,7 +203,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">Satisfaction Commitment</h3>
               <p className="text-gray-300 text-sm">
-                Your happiness is our success. We're not satisfied until you are, 
+                Your happiness is our success. We're not satisfied until you are,
                 which is why 70% of our guests return.
               </p>
             </div>
@@ -213,7 +215,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">Responsive Promise</h3>
               <p className="text-gray-300 text-sm">
-                Quick response to all requests, concerns, and needs. 
+                Quick response to all requests, concerns, and needs.
                 Our team is always ready to assist you.
               </p>
             </div>

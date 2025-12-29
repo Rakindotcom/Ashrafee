@@ -628,33 +628,33 @@ const FeaturedRoomsSection = () => {
                   className="shrink-0 px-2 md:px-4"
                   style={{ width: `${100 / itemsPerView}%` }}
                 >
-                  <div className="relative group overflow-hidden rounded-lg shadow-lg">
+                  <div className="relative group overflow-hidden rounded-lg shadow-lg flex flex-col md:block h-full">
                     {/* Room Image */}
-                    <div className="relative" style={{ aspectRatio: '16/9' }}>
+                    <div className="relative w-full aspect-video md:aspect-auto md:h-full">
                       <img
                         src={room.image}
                         alt={room.name}
                         className="w-full h-full object-cover"
                       />
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
+                      {/* Overlay - Desktop Only */}
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent hidden md:block"></div>
                     </div>
 
                     {/* Content Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white">
-                      <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 drop-shadow-lg">
+                    <div className="relative md:absolute bottom-auto md:bottom-0 left-0 right-0 p-4 md:p-6 bg-white md:bg-transparent text-navy md:text-white flex-1 md:flex-none">
+                      <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 md:drop-shadow-lg">
                         {room.name}
                       </h3>
                       <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
                         <Link
                           to="/contact"
-                          className="bg-orange hover:bg-orange-dark text-white px-4 md:px-6 py-2 md:py-3 rounded text-sm md:text-base font-semibold transition-all duration-300 hover:scale-105 text-center"
+                          className="bg-orange hover:bg-orange-dark text-white px-4 md:px-6 py-2 md:py-3 rounded text-center text-sm md:text-base font-semibold transition-all duration-300 hover:scale-105"
                         >
                           Book Now
                         </Link>
                         <Link
                           to="/rooms"
-                          className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 md:px-6 py-2 md:py-3 rounded text-sm md:text-base font-semibold transition-all duration-300 border border-white/50 text-center"
+                          className="bg-navy md:bg-white/20 hover:bg-navy-dark md:hover:bg-white/30 md:backdrop-blur-sm text-white px-4 md:px-6 py-2 md:py-3 rounded text-center text-sm md:text-base font-semibold transition-all duration-300 md:border md:border-white/50"
                         >
                           View Room
                         </Link>
