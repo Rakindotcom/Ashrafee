@@ -27,7 +27,7 @@ const FAQ = () => {
     },
     {
       question: 'Is the restaurant healthy?',
-      answer: 'Yes, our Aahelee Restaurant is healthy and serves authentic Asian cuisine with vegetarian options.'
+      answer: 'Yes, our Ashrafee Restaurant is healthy and serves authentic Asian cuisine with vegetarian options.'
     },
     {
       question: 'Can I cancel or modify my booking?',

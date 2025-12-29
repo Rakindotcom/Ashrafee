@@ -183,10 +183,6 @@ const HeroSection = () => {
             <Users className="text-heritage-gold" size={20} />
             <span>50,000+ Guests</span>
           </div>
-          <div className="flex items-center gap-2">
-            <RotateCcw className="text-heritage-gold" size={20} />
-            <span>70% Return Rate</span>
-          </div>
         </div>
       </div>
     </section>
@@ -198,14 +194,13 @@ const TrustBar = () => {
   const stats = [
     { number: '34', label: 'Years of Excellence', suffix: '+' },
     { number: '50,000', label: 'Happy Guests', suffix: '+' },
-    { number: '4.9', label: 'Average Rating', suffix: '/5' },
-    { number: '70', label: 'Return Rate', suffix: '%' }
+    { number: '4.9', label: 'Average Rating', suffix: '/5' }
   ]
 
   return (
     <section className="bg-elegant-cream py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="text-navy">
               <div className="text-3xl md:text-4xl font-bold mb-2">
@@ -603,7 +598,7 @@ const FeaturedRoomsSection = () => {
               {rooms.map((room, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 px-2 md:px-4"
+                  className="shrink-0 px-2 md:px-4"
                   style={{ width: `${100 / itemsPerView}%` }}
                 >
                   <div className="relative group overflow-hidden rounded-lg shadow-lg">
@@ -615,7 +610,7 @@ const FeaturedRoomsSection = () => {
                         className="w-full h-full object-cover"
                       />
                       {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
                     </div>
 
                     {/* Content Overlay */}
@@ -718,7 +713,7 @@ const RestaurantSection = () => {
           {/* Content */}
           <div>
             <h2 className="text-4xl font-bold mb-4">Restaurant Service</h2>
-            <p className="text-xl text-gray-200 mb-6">Aahelee</p>
+            <p className="text-xl text-gray-200 mb-6">Ashrafee</p>
             <p className="text-gray-300 mb-8">
               Experience authentic flavors from four distinct cuisines with over 400 carefully crafted dishes.
               From spicy Thai curries to traditional Bangladeshi favorites, our chefs bring you the best of Asian cuisine.
