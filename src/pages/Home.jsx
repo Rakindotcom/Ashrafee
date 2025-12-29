@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Star, Users, Award, RotateCcw, Bed, Heart, Calendar, Wifi, Coffee, Shirt, Utensils, Zap, Clock, Shield, Tv, Camera, Flame, Car, User } from 'lucide-react'
+import { Star, Users, Award, RotateCcw, Bed, Heart, Calendar, Wifi, Coffee, Shirt, Utensils, Zap, Clock, Shield, Tv, Camera, Flame, Car, User, Phone } from 'lucide-react'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 // Custom Date Input Component
@@ -23,6 +23,7 @@ const BookingWidget = () => {
   const [checkOutDate, setCheckOutDate] = useState(null)
   const [guests, setGuests] = useState('')
   const [roomType, setRoomType] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Set minimum dates
   const today = new Date()
@@ -34,23 +35,43 @@ const BookingWidget = () => {
     new Date(checkInDate.getTime() + 86400000) :
     tomorrow
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!checkInDate || !checkOutDate || !guests || !roomType) {
       alert('Please fill in all fields')
       return
     }
 
+    setIsSubmitting(true)
+
     // Calculate nights
     const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
 
-    console.log('Booking:', {
-      checkIn: checkInDate,
-      checkOut: checkOutDate,
-      guests,
-      roomType,
-      nights
-    })
+    try {
+      // Import dynamically to avoid issues
+      const { addBooking } = await import('../services/adminService')
+
+      await addBooking({
+        checkIn: checkInDate,
+        checkOut: checkOutDate,
+        guests: parseInt(guests),
+        roomType,
+        nights
+      })
+
+      alert('Your booking request has been submitted! We will contact you soon to confirm.')
+
+      // Reset form
+      setCheckInDate(null)
+      setCheckOutDate(null)
+      setGuests('')
+      setRoomType('')
+    } catch (error) {
+      console.error('Error submitting booking:', error)
+      alert('There was an error submitting your booking. Please try again or call us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const formatDate = (date) => {
@@ -124,7 +145,7 @@ const BookingWidget = () => {
               className="form-select"
               required
             >
-              <option value="">Choose room type</option>
+              <option value="">Choose Room</option>
               <option value="standard">Standard Rooms - From BDT 2,700</option>
               <option value="deluxe">Deluxe Rooms - From BDT 3,000</option>
               <option value="super-deluxe">Super Deluxe - From BDT 4,200</option>
@@ -133,12 +154,18 @@ const BookingWidget = () => {
           </div>
 
           <div className="btn-booking-container">
-            <button type="submit" className="btn-booking w-full">
-              <span>Check Availability</span>
-              {checkInDate && checkOutDate && (
-                <span className="ml-2 text-xs opacity-90">
-                  ({Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))} nights)
-                </span>
+            <button type="submit" className="btn-booking w-full" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <span>Submitting...</span>
+              ) : (
+                <>
+                  <span>Check Availability</span>
+                  {checkInDate && checkOutDate && (
+                    <span className="ml-2 text-xs opacity-90">
+                      ({Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))} nights)
+                    </span>
+                  )}
+                </>
               )}
             </button>
           </div>
@@ -671,11 +698,10 @@ const FeaturedRoomsSection = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? 'bg-orange scale-125'
-                      : 'bg-gray-400 hover:bg-gray-500'
-                  }`}
+                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                    ? 'bg-orange scale-125'
+                    : 'bg-gray-400 hover:bg-gray-500'
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -697,16 +723,112 @@ const FeaturedRoomsSection = () => {
   )
 }
 
-// Restaurant Highlight Section
+// Restaurant Highlight Section with Image Carousel
 const RestaurantSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const restaurantImages = [
+    {
+      src: '/AshrafeeSpecialSalad.JPG',
+      alt: 'Ashrafee Special Salad',
+      caption: 'Signature Special Salad'
+    },
+    {
+      src: '/AshrafeeSpecialSoup.JPG',
+      alt: 'Ashrafee Special Soup',
+      caption: 'Rich & Flavorful Soup'
+    },
+    {
+      src: '/ThaiSoup.JPG',
+      alt: 'Thai Soup',
+      caption: 'Authentic Thai Soup'
+    },
+    {
+      src: '/FriedSpringChicken.JPG',
+      alt: 'Fried Spring Chicken',
+      caption: 'Crispy Spring Chicken'
+    },
+    {
+      src: '/MasalaChicken.JPG',
+      alt: 'Masala Chicken',
+      caption: 'Spicy Masala Chicken'
+    },
+    {
+      src: '/FriedChicken.JPG',
+      alt: 'Fried Chicken',
+      caption: 'Golden Fried Chicken'
+    },
+    {
+      src: '/ClubSandwich.JPG',
+      alt: 'Club Sandwich',
+      caption: 'Delicious Club Sandwich'
+    }
+  ]
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % restaurantImages.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + restaurantImages.length) % restaurantImages.length)
+  }
+
+  // Auto-advance slides
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 4000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="py-20 bg-navy text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image Carousel Placeholder */}
-          <div className="aspect-w-16 aspect-h-9">
-            <div className="w-full h-80 bg-navy-light rounded-lg flex items-center justify-center">
-              <span className="text-gray-300">Restaurant Images Carousel</span>
+          {/* Image Carousel */}
+          <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-w-16 aspect-h-9 group">
+            <div className="w-full h-[400px] relative">
+              <img
+                src={restaurantImages[currentIndex].src}
+                alt={restaurantImages[currentIndex].alt}
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+
+              {/* Caption */}
+              <div className="absolute bottom-6 left-6 text-white text-xl font-bold">
+                {restaurantImages[currentIndex].caption}
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-orange text-white p-2 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-orange text-white p-2 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Indicators */}
+              <div className="absolute bottom-4 right-4 flex space-x-2">
+                {restaurantImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-orange w-6' : 'bg-white/50 hover:bg-white'
+                      }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -714,23 +836,30 @@ const RestaurantSection = () => {
           <div>
             <h2 className="text-4xl font-bold mb-4">Restaurant Service</h2>
             <p className="text-xl text-gray-200 mb-6">Ashrafee</p>
-            <p className="text-gray-300 mb-8">
+            <p className="text-gray-300 mb-8 leading-relaxed">
               Experience authentic flavors from four distinct cuisines with over 400 carefully crafted dishes.
               From spicy Thai curries to traditional Bangladeshi favorites, our chefs bring you the best of Asian cuisine.
             </p>
 
             {/* Cuisine Badges */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <span className="bg-orange px-4 py-2 rounded-full text-white font-medium">Thai Cuisine</span>
-              <span className="bg-orange px-4 py-2 rounded-full text-white font-medium">Chinese Cuisine</span>
-              <span className="bg-orange px-4 py-2 rounded-full text-white font-medium">Bangladeshi Cuisine</span>
-              <span className="bg-orange px-4 py-2 rounded-full text-white font-medium">Indian Cuisine</span>
+            <div className="flex flex-wrap gap-3 mb-8">
+              <span className="bg-orange/20 border border-orange text-orange-100 px-4 py-2 rounded-full text-sm font-medium">Thai Cuisine</span>
+              <span className="bg-orange/20 border border-orange text-orange-100 px-4 py-2 rounded-full text-sm font-medium">Chinese Cuisine</span>
+              <span className="bg-orange/20 border border-orange text-orange-100 px-4 py-2 rounded-full text-sm font-medium">Bangladeshi Cuisine</span>
+              <span className="bg-orange/20 border border-orange text-orange-100 px-4 py-2 rounded-full text-sm font-medium">Indian Cuisine</span>
             </div>
 
             <div className="space-y-4">
-              <Link to="/restaurant" className="btn-primary inline-block">VIEW FULL MENU</Link>
-              <div className="text-gray-300">
-                Call to book: <a href="tel:01978322743" className="text-orange hover:underline">01978 322 743</a>
+              <Link to="/restaurant" className="inline-flex items-center gap-2 bg-orange hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                VIEW FULL MENU
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <div className="text-gray-300 flex items-center gap-2 mt-4">
+                <Phone size={18} className="text-orange" />
+                <span>Call to book:</span>
+                <a href="tel:01978322743" className="text-white hover:text-orange font-semibold transition-colors">01978 322 743</a>
               </div>
             </div>
           </div>

@@ -13,6 +13,7 @@ const Contact = () => {
     guests: 1,
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
 
   const handleInputChange = (e) => {
@@ -23,11 +24,43 @@ const Contact = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    alert('Thank you for your inquiry! We will contact you within 24 hours.')
+    setIsSubmitting(true)
+
+    try {
+      const { addInquiry } = await import('../services/adminService')
+
+      await addInquiry({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        checkIn: formData.checkIn,
+        checkOut: formData.checkOut,
+        roomType: formData.roomType,
+        guests: parseInt(formData.guests),
+        message: formData.message
+      })
+
+      alert('Thank you for your inquiry! We will contact you within 24 hours.')
+
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        checkIn: '',
+        checkOut: '',
+        roomType: '',
+        guests: 1,
+        message: ''
+      })
+    } catch (error) {
+      console.error('Error submitting inquiry:', error)
+      alert('There was an error submitting your inquiry. Please try again or call us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
 
@@ -49,8 +82,8 @@ const Contact = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
           <p className="text-xl text-gray-200 mb-6">We're here to help make your stay perfect</p>
           <nav className="text-gray-300">
-            <Link to="/" className="hover:text-orange">Home</Link> 
-            <span className="mx-2">&gt;</span> 
+            <Link to="/" className="hover:text-orange">Home</Link>
+            <span className="mx-2">&gt;</span>
             <span>Contact</span>
           </nav>
         </div>
@@ -101,8 +134,8 @@ const Contact = () => {
                 <p><a href="https://wa.me/8801828183920" className="text-dhaka-green hover:underline font-semibold">+880 1828-183920</a></p>
                 <p className="text-sm text-gray-600">Instant messaging</p>
               </div>
-              <a 
-                href="https://wa.me/8801828183920?text=Hi,%20I'm%20interested%20in%20booking%20a%20room%20at%20Hotel%20Ashrafee" 
+              <a
+                href="https://wa.me/8801828183920?text=Hi,%20I'm%20interested%20in%20booking%20a%20room%20at%20Hotel%20Ashrafee"
                 className="btn-whatsapp mt-4 inline-block"
               >
                 CHAT NOW
@@ -164,7 +197,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange"
                     >
-                      {[1,2,3,4].map(n => (
+                      {[1, 2, 3, 4].map(n => (
                         <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
                       ))}
                     </select>
@@ -230,8 +263,8 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn-primary w-full py-4 text-lg">
-                  SEND INQUIRY
+                <button type="submit" className="btn-primary w-full py-4 text-lg disabled:opacity-50" disabled={isSubmitting}>
+                  {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'}
                 </button>
               </form>
             </div>
@@ -239,7 +272,7 @@ const Contact = () => {
             {/* Location Info */}
             <div>
               <h2 className="text-3xl font-bold text-navy mb-8">Location & Directions</h2>
-              
+
               {/* Google Map */}
               <div className="rounded-lg mb-8 overflow-hidden shadow-lg">
                 <iframe

@@ -10,6 +10,15 @@ import Restaurant from './pages/Restaurant'
 import Contact from './pages/Contact'
 import FAQ from './pages/FAQ'
 
+// Admin imports
+import { AuthProvider } from './context/AuthContext'
+import ProtectedRoute from './components/ProtectedRoute'
+import AdminLogin from './pages/admin/AdminLogin'
+import AdminLayout from './pages/admin/AdminLayout'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import AdminBookings from './pages/admin/AdminBookings'
+import AdminInquiries from './pages/admin/AdminInquiries'
+
 // WhatsApp Floating Button Component
 const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(true)
@@ -59,24 +68,50 @@ const ScrollToTop = () => {
   return null
 }
 
+// Public Layout Component (with Header/Footer)
+const PublicLayout = ({ children }) => (
+  <>
+    <Header />
+    {children}
+    <Footer />
+    <WhatsAppFloat />
+  </>
+)
+
 // Main App Component
 const App = () => {
   return (
-    <div className="min-h-screen">
-      <ScrollToTop />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/rooms" element={<Rooms />} />
-        <Route path="/restaurant" element={<Restaurant />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-      <Footer />
-      <WhatsAppFloat />
-    </div>
+    <AuthProvider>
+      <div className="min-h-screen">
+        <ScrollToTop />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
+          <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
+          <Route path="/rooms" element={<PublicLayout><Rooms /></PublicLayout>} />
+          <Route path="/restaurant" element={<PublicLayout><Restaurant /></PublicLayout>} />
+          <Route path="/faq" element={<PublicLayout><FAQ /></PublicLayout>} />
+          <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
+
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<AdminDashboard />} />
+            <Route path="bookings" element={<AdminBookings />} />
+            <Route path="inquiries" element={<AdminInquiries />} />
+          </Route>
+        </Routes>
+      </div>
+    </AuthProvider>
   )
 }
 
 export default App
+

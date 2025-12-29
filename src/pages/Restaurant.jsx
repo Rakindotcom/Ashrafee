@@ -259,8 +259,8 @@ const Restaurant = () => {
             Call to reserve: <a href="tel:01978322743" className="text-orange hover:underline font-semibold">01978 322 743</a>
           </div>
           <nav className="text-gray-300 mt-4">
-            <Link to="/" className="hover:text-orange">Home</Link> 
-            <span className="mx-2">&gt;</span> 
+            <Link to="/" className="hover:text-orange">Home</Link>
+            <span className="mx-2">&gt;</span>
             <span>Restaurant</span>
           </nav>
         </div>
@@ -272,13 +272,13 @@ const Restaurant = () => {
           <h2 className="text-2xl font-bold text-navy mb-6 text-center">Chef's Recommendations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {featuredItems.map((item, index) => (
-              <div key={index} className="bg-gradient-to-br from-orange/5 to-orange/10 rounded-xl p-4 border border-orange/20">
+              <div key={index} className="bg-navy rounded-xl p-4 border border-navy-light shadow-lg hover:transform hover:scale-105 transition-all duration-300">
                 <div className="flex items-start justify-between mb-3">
-                  <span className="bg-orange text-white text-xs px-2 py-1 rounded-full">{item.category}</span>
-                  <Star className="text-orange" size={16} />
+                  <span className="bg-orange text-white text-xs px-2 py-1 rounded-full font-medium">{item.category}</span>
+                  <Star className="text-orange" size={16} fill="currentColor" />
                 </div>
-                <h3 className="font-bold text-navy text-lg mb-2">{item.name}</h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
+                <h3 className="font-bold text-white text-lg mb-2">{item.name}</h3>
+                <p className="text-gray-100 text-sm">{item.description}</p>
               </div>
             ))}
           </div>
@@ -437,18 +437,17 @@ const Restaurant = () => {
             <h2 className="text-3xl font-bold text-navy mb-2">Our Menu</h2>
             <p className="text-gray-600">Authentic flavors from across Asia</p>
           </div>
-          
+
           {/* Cuisine Tabs - Modern Design */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {cuisines.map(cuisine => (
               <button
                 key={cuisine.id}
                 onClick={() => setActiveTab(cuisine.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all ${
-                  activeTab === cuisine.id
+                className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all ${activeTab === cuisine.id
                     ? 'bg-orange text-white shadow-lg scale-105'
                     : 'bg-white text-navy hover:bg-orange/10 border border-gray-200'
-                }`}
+                  }`}
               >
                 <span>{cuisine.name}</span>
               </button>
@@ -500,7 +499,7 @@ const Restaurant = () => {
       <section className="py-12 bg-navy text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-white text-center mb-8">Party Menu Packages</h2>
-          
+
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Chinese Party Menu */}
             <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-6 shadow-lg">
@@ -510,7 +509,7 @@ const Restaurant = () => {
                   7 Packages Available
                 </div>
               </div>
-              
+
               <div className="overflow-x-auto">
                 <table className="w-full bg-white rounded-lg shadow-sm">
                   <thead>
@@ -549,7 +548,7 @@ const Restaurant = () => {
                   6 Packages Available
                 </div>
               </div>
-              
+
               <div className="overflow-x-auto">
                 <table className="w-full bg-white rounded-lg shadow-sm">
                   <thead>
@@ -584,8 +583,8 @@ const Restaurant = () => {
               <h3 className="text-2xl font-bold mb-4">Ready to Order a Party Package?</h3>
               <p className="text-lg mb-6 opacity-90">Contact us to customize your party menu and make reservations</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a 
-                  href="tel:01978322743" 
+                <a
+                  href="tel:01978322743"
                   className="bg-orange hover:bg-orange-hover text-white px-8 py-3 rounded-full font-bold transition-all inline-flex items-center gap-2"
                 >
                   <Phone size={18} />
@@ -654,8 +653,8 @@ const Restaurant = () => {
           <div className="max-w-3xl mx-auto bg-orange text-white rounded-2xl p-8 text-center shadow-2xl">
             <h2 className="text-3xl font-bold mb-3">Home Delivery Available</h2>
             <p className="text-lg mb-6">Enjoy our delicious cuisine in the comfort of your home</p>
-            <a 
-              href="tel:01978322743" 
+            <a
+              href="tel:01978322743"
               className="bg-white text-orange px-6 py-3 text-base font-bold rounded-full hover:bg-gray-100 transition-all inline-flex items-center gap-2"
             >
               <Phone size={18} />
@@ -671,8 +670,8 @@ const Restaurant = () => {
           <h2 className="text-4xl font-bold mb-4">Ready to Taste?</h2>
           <p className="text-xl text-gray-300 mb-8">Reserve your table or order room service now</p>
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
-            <a 
-              href="tel:01978322743" 
+            <a
+              href="tel:01978322743"
               className="btn-primary px-8 py-4 text-lg flex items-center gap-2"
             >
               <Phone size={20} />

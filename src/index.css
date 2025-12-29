@@ -371,56 +371,41 @@ ccessibility - Screen Reader Only */
   font-family: 'ObjectSans', sans-serif;
 }
 
-/* Modern Select Dropdown Styles */
+/* Select Dropdown with Left Accent */
 .form-select {
   width: 100%;
   padding: 0.875rem 1rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.75rem;
-  font-size: 0.875rem;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid var(--orange-primary);
+  border-radius: 6px;
+  font-size: 0.9375rem;
   font-weight: 500;
   color: #1f2937;
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23fb923c' stroke-width='2'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3e%3c/svg%3e");
-  background-position: right 1rem center;
-  background-repeat: no-repeat;
-  background-size: 1.25rem 1.25rem;
-  padding-right: 3rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #fafafa;
   font-family: 'ObjectSans', sans-serif;
-  appearance: none;
   cursor: pointer;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  min-height: 3.5rem;
+  min-height: 3.25rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .form-select:hover {
-  border-color: #fb923c;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background-color: #fff7ed;
+  border-color: #fcd9b8;
+  border-left-color: var(--orange-hover);
 }
 
 .form-select:focus {
   outline: none;
+  background-color: #ffffff;
   border-color: var(--orange-primary);
-  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ea580c' stroke-width='2.5'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M5 15l7-7 7 7'/%3e%3c/svg%3e");
+  border-left-width: 4px;
 }
 
-/* Custom Select Option Styling */
 .form-select option {
   padding: 0.75rem 1rem;
   font-weight: 500;
-  color: #1f2937;
+  color: #374151;
   background-color: #ffffff;
-}
-
-.form-select option:hover {
-  background-color: #f9fafb;
-}
-
-.form-select option:checked {
-  background-color: var(--orange-primary);
-  color: white;
 }
 
 /* Date Input Styles */
@@ -759,4 +744,452 @@ om Date Picker Container */
 
 .react-datepicker__day--disabled:hover {
   background-color: transparent;
+}
+
+/* ============================================
+   ADMIN DASHBOARD STYLES
+   ============================================ */
+
+/* Reset any default focus rings that cause blue glow */
+.admin-layout *:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Override any Tailwind ring utilities */
+.admin-layout *,
+.admin-layout *::before,
+.admin-layout *::after {
+  --tw-ring-color: transparent !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
+/* Remove blue ring from all elements */
+.admin-layout [class*="ring-"] {
+  --tw-ring-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Only add focus styles where needed */
+.admin-layout input:focus,
+.admin-layout select:focus,
+.admin-layout textarea:focus {
+  outline: none;
+  border-color: var(--orange-primary) !important;
+  box-shadow: 0 0 0 2px rgba(251, 146, 60, 0.2) !important;
+}
+
+/* Remove any global box shadows that cause issues */
+.admin-layout .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.admin-layout .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.admin-layout .shadow-2xl {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Force clean shadows on white cards */
+.admin-layout .bg-white {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+.admin-layout .rounded-xl.bg-white {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Admin Login Page Background */
+.admin-login-bg {
+  background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-dark) 50%, var(--navy-darker) 100%);
+  min-height: 100vh;
+}
+
+/* Fix for gradient backgrounds in admin pages */
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, var(--from-color, #006A4E), var(--via-color, #004D38), var(--to-color, #003D2E));
+}
+
+.from-navy {
+  --from-color: var(--navy-primary);
+}
+
+.via-navy-dark {
+  --via-color: var(--navy-dark);
+}
+
+.to-navy-darker {
+  --to-color: var(--navy-darker);
+}
+
+/* Admin Sidebar */
+.admin-sidebar {
+  background-color: var(--navy-primary);
+  min-height: 100vh;
+}
+
+.admin-sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.admin-sidebar-item:hover {
+  background-color: var(--navy-light);
+  color: white;
+}
+
+.admin-sidebar-item.active {
+  background-color: var(--orange-primary);
+  color: white;
+}
+
+/* Admin Cards */
+.admin-stat-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.admin-stat-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Admin Table */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background-color: #f9fafb;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.admin-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-confirmed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-completed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-cancelled {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Admin Button Styles */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.admin-btn-primary {
+  background-color: var(--orange-primary);
+  color: white;
+}
+
+.admin-btn-primary:hover {
+  background-color: var(--orange-hover);
+}
+
+.admin-btn-secondary {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.admin-btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.admin-btn-danger {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-btn-danger:hover {
+  background-color: #fecaca;
+}
+
+/* Loading Spinner */
+.admin-spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fix focus ring on inputs */
+.admin-input:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.2);
+}
+
+/* Gradient text for headings */
+.gradient-text {
+  background: linear-gradient(135deg, var(--navy-primary), var(--orange-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Orange hover states */
+.hover\:bg-orange-hover:hover {
+  background-color: var(--orange-hover);
+}
+
+/* Navy light for sidebar hover */
+.bg-navy-light {
+  background-color: var(--navy-light);
+}
+
+/* Ensure text colors work properly */
+.text-white {
+  color: white !important;
+}
+
+/* Fix for admin pages where gradient is used */
+[class*="from-navy"][class*="via-navy"][class*="to-navy"] {
+  background: linear-gradient(to bottom right, var(--navy-primary), var(--navy-dark), var(--navy-darker)) !important;
+}
+
+/* Fix purple background for inquiries icon */
+.bg-purple-500 {
+  background-color: #8b5cf6;
+}
+
+/* Fix blue backgrounds */
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+
+.text-blue-800 {
+  color: #1e40af;
+}
+
+/* Fix green backgrounds */
+.bg-green-500 {
+  background-color: #22c55e;
+}
+
+.bg-green-100 {
+  background-color: #dcfce7;
+}
+
+.text-green-800 {
+  color: #166534;
+}
+
+.text-green-600 {
+  color: #16a34a;
+}
+
+/* Fix yellow backgrounds */
+.bg-yellow-100 {
+  background-color: #fef9c3;
+}
+
+.text-yellow-800 {
+  color: #854d0e;
+}
+
+/* Fix red backgrounds */
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+
+.bg-red-50 {
+  background-color: #fef2f2;
+}
+
+.text-red-800 {
+  color: #991b1b;
+}
+
+.text-red-700 {
+  color: #b91c1c;
+}
+
+.text-red-600 {
+  color: #dc2626;
+}
+
+.text-red-400 {
+  color: #f87171;
+}
+
+.bg-red-600\/20 {
+  background-color: rgba(220, 38, 38, 0.2);
+}
+
+.bg-red-600\/30 {
+  background-color: rgba(220, 38, 38, 0.3);
+}
+
+/* Fix gray colors for admin */
+.bg-gray-50 {
+  background-color: #f9fafb;
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-gray-500 {
+  color: #6b7280;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+.border-gray-200 {
+  border-color: #e5e7eb;
+}
+
+.border-gray-100 {
+  border-color: #f3f4f6;
+}
+
+.divide-gray-100> :not([hidden])~ :not([hidden]) {
+  border-color: #f3f4f6;
+}
+
+/* Fix orange colors */
+.text-orange {
+  color: var(--orange-primary);
+}
+
+.bg-orange {
+  background-color: var(--orange-primary);
+}
+
+.border-orange {
+  border-color: var(--orange-primary);
+}
+
+.bg-orange\/5 {
+  background-color: rgba(251, 146, 60, 0.05);
+}
+
+.bg-orange\/10 {
+  background-color: rgba(251, 146, 60, 0.1);
+}
+
+.bg-orange\/20 {
+  background-color: rgba(251, 146, 60, 0.2);
+}
+
+/* Ensure proper focus for admin inputs */
+.focus\:border-orange:focus {
+  border-color: var(--orange-primary);
+}
+
+.focus\:ring-0:focus {
+  box-shadow: none;
+}
+
+/* Line clamp for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Truncate text */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Admin layout specific */
+.admin-content-area {
+  background-color: #f3f4f6;
+  min-height: 100vh;
 }
