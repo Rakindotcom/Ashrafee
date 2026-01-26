@@ -681,7 +681,7 @@ const FeaturedRoomsSection = () => {
                     </div>
 
                     {/* Content Overlay */}
-                    <div className="relative md:absolute bottom-auto md:bottom-0 left-0 right-0 p-4 md:p-6 bg-white md:bg-transparent text-navy md:text-white flex-1 md:flex-none">
+                    <div className="relative md:absolute bottom-auto md:bottom-0 left-0 right-0 p-4 md:p-6 bg-white md:bg-transparent text-white md:text-white flex-1 md:flex-none">
                       <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 md:drop-shadow-lg">
                         {room.name}
                       </h3>
