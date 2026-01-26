@@ -492,7 +492,7 @@ ccessibility - Screen Reader Only */
 /* Booking Widget Grid */
 .booking-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 200px;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
   align-items: end;
 }

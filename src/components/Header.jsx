@@ -60,41 +60,7 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* CTA Section */}
-          <div className="hidden lg:flex items-center space-x-3">
-            {/* Contact Icons */}
-            <div className="flex items-center space-x-2 mr-4">
-              <a
-                href="tel:+8801828183920"
-                className="p-3 rounded-full bg-navy-darker/60 text-white hover:bg-orange hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg group border border-gray-600/30"
-                title="Call us"
-              >
-                <Phone size={18} className="group-hover:animate-pulse" />
-              </a>
-              <a
-                href="https://wa.me/8801828183920"
-                className="p-3 rounded-full bg-navy-darker/60 text-white hover:bg-green-500 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg group border border-gray-600/30"
-                title="WhatsApp us"
-              >
-                <MessageCircle size={18} className="group-hover:animate-pulse" />
-              </a>
-            </div>
 
-            {/* Book Now Button */}
-            <Link
-              to="/contact"
-              className="
-                relative px-8 py-3 bg-linear-to-r from-orange to-orange-hover 
-                text-white font-bold text-sm tracking-wide rounded-full
-                shadow-lg shadow-orange/30 hover:shadow-xl hover:shadow-orange/40
-                transition-all duration-300 hover:scale-105 hover:from-orange-hover hover:to-orange
-                border border-orange-hover/20 overflow-hidden group
-              "
-            >
-              <span className="relative z-10">BOOK NOW</span>
-              <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            </Link>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -132,30 +98,7 @@ const Header = () => {
               ))}
             </div>
 
-            {/* Mobile CTA */}
-            <div className="mt-6 pt-6 border-t border-gray-600/30">
-              <div className="flex items-center justify-center space-x-4 mb-4">
-                <a
-                  href="tel:+8801828183920"
-                  className="p-3 rounded-full bg-navy text-white hover:bg-orange transition-all duration-300 border border-gray-600/30"
-                >
-                  <Phone size={20} />
-                </a>
-                <a
-                  href="https://wa.me/8801828183920"
-                  className="p-3 rounded-full bg-navy text-white hover:bg-green-500 transition-all duration-300 border border-gray-600/30"
-                >
-                  <MessageCircle size={20} />
-                </a>
-              </div>
-              <Link
-                to="/contact"
-                className="block w-full py-4 bg-linear-to-r from-orange to-orange-hover text-white font-bold text-center rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                BOOK NOW
-              </Link>
-            </div>
+
           </nav>
         </div>
       </div>

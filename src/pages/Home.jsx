@@ -19,10 +19,14 @@ const CustomDateInput = ({ value, onClick, placeholder, className }) => (
 
 // Booking Widget Component
 const BookingWidget = () => {
-  const [checkInDate, setCheckInDate] = useState(null)
-  const [checkOutDate, setCheckOutDate] = useState(null)
-  const [guests, setGuests] = useState('')
-  const [roomType, setRoomType] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    checkInDate: null,
+    checkOutDate: null,
+    guests: '',
+    roomType: ''
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Set minimum dates
@@ -31,41 +35,52 @@ const BookingWidget = () => {
   tomorrow.setDate(tomorrow.getDate() + 1)
 
   // Set minimum checkout date based on checkin
-  const minCheckOutDate = checkInDate ?
-    new Date(checkInDate.getTime() + 86400000) :
+  const minCheckOutDate = formData.checkInDate ?
+    new Date(formData.checkInDate.getTime() + 86400000) :
     tomorrow
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!checkInDate || !checkOutDate || !guests || !roomType) {
-      alert('Please fill in all fields')
+    if (!formData.name || !formData.phone || !formData.checkInDate || !formData.checkOutDate || !formData.guests || !formData.roomType) {
+      alert('Please fill in all required fields')
       return
     }
 
     setIsSubmitting(true)
 
     // Calculate nights
-    const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
+    const nights = Math.ceil((formData.checkOutDate - formData.checkInDate) / (1000 * 60 * 60 * 24))
 
     try {
       // Import dynamically to avoid issues
       const { addBooking } = await import('../services/adminService')
 
       await addBooking({
-        checkIn: checkInDate,
-        checkOut: checkOutDate,
-        guests: parseInt(guests),
-        roomType,
+        name: formData.name,
+        phone: formData.phone,
+        checkIn: formData.checkInDate,
+        checkOut: formData.checkOutDate,
+        guests: parseInt(formData.guests),
+        roomType: formData.roomType,
         nights
       })
 
-      alert('Your booking request has been submitted! We will contact you soon to confirm.')
+      alert('Your booking has been submitted successfully! We will contact you soon to confirm.')
 
       // Reset form
-      setCheckInDate(null)
-      setCheckOutDate(null)
-      setGuests('')
-      setRoomType('')
+      setFormData({
+        name: '',
+        phone: '',
+        checkInDate: null,
+        checkOutDate: null,
+        guests: '',
+        roomType: ''
+      })
     } catch (error) {
       console.error('Error submitting booking:', error)
       alert('There was an error submitting your booking. Please try again or call us directly.')
@@ -74,30 +89,21 @@ const BookingWidget = () => {
     }
   }
 
-  const formatDate = (date) => {
-    if (!date) return ''
-    return date.toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric'
-    })
-  }
-
   return (
     <div className="booking-widget max-w-5xl mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="booking-grid">
           <div>
-            <label className="form-label">Check-in Date</label>
+            <label className="form-label">Check-in</label>
             <DatePicker
-              selected={checkInDate}
-              onChange={(date) => setCheckInDate(date)}
+              selected={formData.checkInDate}
+              onChange={(date) => setFormData(prev => ({ ...prev, checkInDate: date }))}
               minDate={today}
-              placeholderText="Select check-in date"
+              placeholderText="Check-in date"
               customInput={
                 <CustomDateInput
                   className="custom-date-input"
-                  placeholder="Select check-in date"
+                  placeholder="Check-in date"
                 />
               }
               dateFormat="EEE, MMM d"
@@ -105,16 +111,16 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Check-out Date</label>
+            <label className="form-label">Check-out</label>
             <DatePicker
-              selected={checkOutDate}
-              onChange={(date) => setCheckOutDate(date)}
+              selected={formData.checkOutDate}
+              onChange={(date) => setFormData(prev => ({ ...prev, checkOutDate: date }))}
               minDate={minCheckOutDate}
-              placeholderText="Select check-out date"
+              placeholderText="Check-out date"
               customInput={
                 <CustomDateInput
                   className="custom-date-input"
-                  placeholder="Select check-out date"
+                  placeholder="Check-out date"
                 />
               }
               dateFormat="EEE, MMM d"
@@ -122,10 +128,11 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Number of Guests</label>
+            <label className="form-label">Guests</label>
             <select
-              value={guests}
-              onChange={(e) => setGuests(e.target.value)}
+              name="guests"
+              value={formData.guests}
+              onChange={handleInputChange}
               className="form-select"
               required
             >
@@ -138,37 +145,64 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Room Category</label>
+            <label className="form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Your name"
+              className="custom-date-input"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="form-label">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              placeholder="Your phone"
+              className="custom-date-input"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="form-label">Room</label>
             <select
-              value={roomType}
-              onChange={(e) => setRoomType(e.target.value)}
+              name="roomType"
+              value={formData.roomType}
+              onChange={handleInputChange}
               className="form-select"
               required
             >
               <option value="">Choose Room</option>
-              <option value="standard">Standard Rooms - From BDT 2,700</option>
-              <option value="deluxe">Deluxe Rooms - From BDT 3,000</option>
-              <option value="super-deluxe">Super Deluxe - From BDT 4,200</option>
-              <option value="green-deluxe">Green Deluxe - From BDT 4,500</option>
+              <option value="standard">Standard - BDT 2,700</option>
+              <option value="deluxe">Deluxe - BDT 3,000</option>
+              <option value="super-deluxe">Super Deluxe - BDT 4,200</option>
+              <option value="green-deluxe">Green Deluxe - BDT 4,500</option>
             </select>
           </div>
+        </div>
 
-          <div className="btn-booking-container">
-            <button type="submit" className="btn-booking w-full" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <span>Submitting...</span>
-              ) : (
-                <>
-                  <span>Check Availability</span>
-                  {checkInDate && checkOutDate && (
-                    <span className="ml-2 text-xs opacity-90">
-                      ({Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))} nights)
-                    </span>
-                  )}
-                </>
-              )}
-            </button>
-          </div>
+        <div className="btn-booking-container mt-4">
+          <button type="submit" className="btn-booking w-full" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <span>Submitting...</span>
+            ) : (
+              <>
+                <span>Book Now</span>
+                {formData.checkInDate && formData.checkOutDate && (
+                  <span className="ml-2 text-xs opacity-90">
+                    ({Math.ceil((formData.checkOutDate - formData.checkInDate) / (1000 * 60 * 60 * 24))} nights)
+                  </span>
+                )}
+              </>
+            )}
+          </button>
         </div>
       </form>
     </div>
@@ -178,9 +212,15 @@ const BookingWidget = () => {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen bg-navy flex items-center">
-      {/* Background overlay for better text readability */}
-      <div className="absolute inset-0 bg-navy-darker opacity-90"></div>
+    <section id="home" className="relative h-screen flex items-center">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/ashrafee.jpg)' }}
+      ></div>
+      
+      {/* Green overlay with low opacity */}
+      <div className="absolute inset-0 bg-navy opacity-70"></div>
 
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -792,7 +832,7 @@ const RestaurantSection = () => {
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent"></div>
 
               {/* Caption */}
               <div className="absolute bottom-6 left-6 text-white text-xl font-bold">

@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Clock, Phone, Star, Utensils, Award, Users, ChefHat, MapPin } from 'lucide-react'
+import { Clock, Phone, Star, Utensils, Award, Users, ChefHat, MapPin, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Restaurant = () => {
   const [activeTab, setActiveTab] = useState('thai')
+  const [selectedPartyMenu, setSelectedPartyMenu] = useState(null)
 
   // Featured Best Selling Items
   const featuredItems = [
@@ -461,7 +462,7 @@ const Restaurant = () => {
                 <div key={cuisine.id} className="space-y-8">
                   {Object.entries(menuData[cuisine.id] || {}).map(([category, items]) => (
                     <div key={category} className="bg-white rounded-xl shadow-sm overflow-hidden">
-                      <div className="bg-gradient-to-r from-navy to-navy-darker text-white px-6 py-4">
+                      <div className="bg-linear-to-r from-navy to-navy-darker text-white px-6 py-4">
                         <h3 className="text-xl font-bold capitalize flex items-center gap-2">
                           <ChefHat size={20} />
                           {category.replace(/([A-Z])/g, ' $1').trim()}
@@ -502,7 +503,7 @@ const Restaurant = () => {
 
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Chinese Party Menu */}
-            <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-6 shadow-lg">
+            <div className="bg-linear-to-r from-red-50 to-red-100 rounded-2xl p-6 shadow-lg">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-red-800">Chinese Party Menu</h3>
                 <div className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
@@ -518,22 +519,31 @@ const Restaurant = () => {
                       <th className="px-6 py-4 text-left font-semibold">Package Code</th>
                       <th className="px-6 py-4 text-left font-semibold">Package Name</th>
                       <th className="px-6 py-4 text-right font-semibold">Price (BDT)</th>
+                      <th className="px-6 py-4 text-center font-semibold">Action</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {[
-                      { code: '0133', name: 'PARTY- 1 CHINESE', price: '880.00' },
-                      { code: '0134', name: 'PARTY- 2 CHINESE', price: '890.00' },
-                      { code: '0135', name: 'PARTY- 3 CHINESE', price: '915.00' },
-                      { code: '0136', name: 'PARTY- 4 CHINESE', price: '850.00' },
-                      { code: '0137', name: 'PARTY- 5 CHINESE', price: '965.00' },
-                      { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00' },
-                      { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00' }
+                      { code: '0133', name: 'PARTY- 1 CHINESE', price: '880.00', menuId: 'chinese-1' },
+                      { code: '0134', name: 'PARTY- 2 CHINESE', price: '890.00', menuId: 'chinese-2' },
+                      { code: '0135', name: 'PARTY- 3 CHINESE', price: '915.00', menuId: 'chinese-3' },
+                      { code: '0136', name: 'PARTY- 4 CHINESE', price: '850.00', menuId: 'chinese-4' },
+                      { code: '0137', name: 'PARTY- 5 CHINESE', price: '965.00', menuId: 'chinese-5' },
+                      { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00', menuId: 'chinese-6' },
+                      { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00', menuId: 'chinese-7' }
                     ].map((pkg, index) => (
                       <tr key={index} className="hover:bg-red-50 transition-colors">
                         <td className="px-6 py-4 text-sm font-mono text-gray-600">#{pkg.code}</td>
                         <td className="px-6 py-4 font-semibold text-gray-800">{pkg.name}</td>
                         <td className="px-6 py-4 text-right font-bold text-red-600 text-lg">৳{pkg.price}</td>
+                        <td className="px-6 py-4 text-center">
+                          <button
+                            onClick={() => setSelectedPartyMenu(pkg.menuId)}
+                            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                          >
+                            View Details
+                          </button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -543,29 +553,37 @@ const Restaurant = () => {
               {/* Mobile View */}
               <div className="md:hidden grid grid-cols-1 gap-3">
                 {[
-                  { code: '0133', name: 'PARTY- 1 CHINESE', price: '880.00' },
-                  { code: '0134', name: 'PARTY- 2 CHINESE', price: '890.00' },
-                  { code: '0135', name: 'PARTY- 3 CHINESE', price: '915.00' },
-                  { code: '0136', name: 'PARTY- 4 CHINESE', price: '850.00' },
-                  { code: '0137', name: 'PARTY- 5 CHINESE', price: '965.00' },
-                  { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00' },
-                  { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00' }
+                  { code: '0133', name: 'PARTY- 1 CHINESE', price: '880.00', menuId: 'chinese-1' },
+                  { code: '0134', name: 'PARTY- 2 CHINESE', price: '890.00', menuId: 'chinese-2' },
+                  { code: '0135', name: 'PARTY- 3 CHINESE', price: '915.00', menuId: 'chinese-3' },
+                  { code: '0136', name: 'PARTY- 4 CHINESE', price: '850.00', menuId: 'chinese-4' },
+                  { code: '0137', name: 'PARTY- 5 CHINESE', price: '965.00', menuId: 'chinese-5' },
+                  { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00', menuId: 'chinese-6' },
+                  { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00', menuId: 'chinese-7' }
                 ].map((pkg, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-red-100 flex justify-between items-center">
-                    <div>
-                      <span className="text-xs text-red-500 font-mono bg-red-50 px-2 py-0.5 rounded">#{pkg.code}</span>
-                      <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-red-100">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <span className="text-xs text-red-500 font-mono bg-red-50 px-2 py-0.5 rounded">#{pkg.code}</span>
+                        <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
+                      </div>
+                      <div className="text-red-700 font-bold whitespace-nowrap ml-2">
+                        ৳{pkg.price}
+                      </div>
                     </div>
-                    <div className="text-red-700 font-bold whitespace-nowrap ml-2">
-                      ৳{pkg.price}
-                    </div>
+                    <button
+                      onClick={() => setSelectedPartyMenu(pkg.menuId)}
+                      className="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all"
+                    >
+                      View Details
+                    </button>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Bangla Party Menu */}
-            <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-6 shadow-lg">
+            <div className="bg-linear-to-r from-green-50 to-green-100 rounded-2xl p-6 shadow-lg">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-green-800">Bangla Party Menu</h3>
                 <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
@@ -581,21 +599,30 @@ const Restaurant = () => {
                       <th className="px-6 py-4 text-left font-semibold">Package Code</th>
                       <th className="px-6 py-4 text-left font-semibold">Package Name</th>
                       <th className="px-6 py-4 text-right font-semibold">Price (BDT)</th>
+                      <th className="px-6 py-4 text-center font-semibold">Action</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {[
-                      { code: '666', name: 'PARTY- 1 BANGLA', price: '870.00' },
-                      { code: '667', name: 'PARTY- 2 BANGLA', price: '950.00' },
-                      { code: '668', name: 'PARTY- 3 BANGLA', price: '1,125.00' },
-                      { code: '669', name: 'PARTY- 4 BANGLA', price: '630.00' },
-                      { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00' },
-                      { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00' }
+                      { code: '666', name: 'PARTY- 1 BANGLA', price: '870.00', menuId: 'bangla-1' },
+                      { code: '667', name: 'PARTY- 2 BANGLA', price: '950.00', menuId: 'bangla-2' },
+                      { code: '668', name: 'PARTY- 3 BANGLA', price: '1,125.00', menuId: 'bangla-3' },
+                      { code: '669', name: 'PARTY- 4 BANGLA', price: '630.00', menuId: 'bangla-4' },
+                      { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00', menuId: 'bangla-5' },
+                      { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00', menuId: 'bangla-6' }
                     ].map((pkg, index) => (
                       <tr key={index} className="hover:bg-green-50 transition-colors">
                         <td className="px-6 py-4 text-sm font-mono text-gray-600">#{pkg.code}</td>
                         <td className="px-6 py-4 font-semibold text-gray-800">{pkg.name}</td>
                         <td className="px-6 py-4 text-right font-bold text-green-600 text-lg">৳{pkg.price}</td>
+                        <td className="px-6 py-4 text-center">
+                          <button
+                            onClick={() => setSelectedPartyMenu(pkg.menuId)}
+                            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                          >
+                            View Details
+                          </button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -605,28 +632,36 @@ const Restaurant = () => {
               {/* Mobile View */}
               <div className="md:hidden grid grid-cols-1 gap-3">
                 {[
-                  { code: '666', name: 'PARTY- 1 BANGLA', price: '870.00' },
-                  { code: '667', name: 'PARTY- 2 BANGLA', price: '950.00' },
-                  { code: '668', name: 'PARTY- 3 BANGLA', price: '1,125.00' },
-                  { code: '669', name: 'PARTY- 4 BANGLA', price: '630.00' },
-                  { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00' },
-                  { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00' }
+                  { code: '666', name: 'PARTY- 1 BANGLA', price: '870.00', menuId: 'bangla-1' },
+                  { code: '667', name: 'PARTY- 2 BANGLA', price: '950.00', menuId: 'bangla-2' },
+                  { code: '668', name: 'PARTY- 3 BANGLA', price: '1,125.00', menuId: 'bangla-3' },
+                  { code: '669', name: 'PARTY- 4 BANGLA', price: '630.00', menuId: 'bangla-4' },
+                  { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00', menuId: 'bangla-5' },
+                  { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00', menuId: 'bangla-6' }
                 ].map((pkg, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-green-100 flex justify-between items-center">
-                    <div>
-                      <span className="text-xs text-green-600 font-mono bg-green-50 px-2 py-0.5 rounded">#{pkg.code}</span>
-                      <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-green-100">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <span className="text-xs text-green-600 font-mono bg-green-50 px-2 py-0.5 rounded">#{pkg.code}</span>
+                        <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
+                      </div>
+                      <div className="text-green-700 font-bold whitespace-nowrap ml-2">
+                        ৳{pkg.price}
+                      </div>
                     </div>
-                    <div className="text-green-700 font-bold whitespace-nowrap ml-2">
-                      ৳{pkg.price}
-                    </div>
+                    <button
+                      onClick={() => setSelectedPartyMenu(pkg.menuId)}
+                      className="w-full bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all"
+                    >
+                      View Details
+                    </button>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Contact Information */}
-            <div className="bg-gradient-to-r from-navy to-navy-darker text-white rounded-2xl p-8 text-center">
+            <div className="bg-linear-to-r from-navy to-navy-darker text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Order a Party Package?</h3>
               <p className="text-lg mb-6 opacity-90">Contact us to customize your party menu and make reservations</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -730,6 +765,247 @@ const Restaurant = () => {
           </div>
         </div>
       </section>
+
+      {/* Party Menu Details Modal */}
+      {selectedPartyMenu && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button
+              onClick={() => setSelectedPartyMenu(null)}
+              className="absolute top-4 right-4 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full transition-all z-10"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="p-8">
+              {selectedPartyMenu === 'bangla-1' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-green-700 mb-2">Party Menu-01</h2>
+                  <p className="text-2xl font-bold text-green-600 mb-6">৳870</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Plain Pollaw</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Chicken Roast</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Beef Rezalla</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zali kabab-(Chicken/Beef)</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Vegetable</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Salad</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zarda/Firni</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Borhani/Soft Drink</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> M. Water-500 ml</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'bangla-2' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-green-700 mb-2">Party Menu-02</h2>
+                  <p className="text-2xl font-bold text-green-600 mb-6">৳950</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Plain Pollaw</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Chicken Roast</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Mutton Rezalla</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zali kabab-(Chicken/Beef)</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Vegetable</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Salad</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zarda/Firni</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Borhani/Soft Drink</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> M. Water-500 ml</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'bangla-3' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-green-700 mb-2">Party Menu-03</h2>
+                  <p className="text-2xl font-bold text-green-600 mb-6">৳1,125</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Mutton Kachchi Biriyani</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Chicken Roast</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zali kabab-(Chicken/Beef)</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Salad</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zarda/Firni</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Borhani/Soft Drink</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> M. Water-500 ml</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'bangla-4' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-green-700 mb-2">Party Menu-04</h2>
+                  <p className="text-2xl font-bold text-green-600 mb-6">৳630</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Beef Tehari</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zali kabab-(Chicken/Beef)</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Salad</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Soft Drink/M Water-500ml</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'bangla-5' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-green-700 mb-2">Party Menu-05</h2>
+                  <p className="text-2xl font-bold text-green-600 mb-2">৳600</p>
+                  <p className="text-sm text-green-600 mb-6">(Per-Plate)</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Bhuna Khichury</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Chicken/Beef Bhuna</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Salad</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Soft Drink/M Water-500 ml</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'bangla-6' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-green-700 mb-2">Party Menu-06</h2>
+                  <p className="text-2xl font-bold text-green-600 mb-2">৳500</p>
+                  <p className="text-sm text-green-600 mb-6">(Per-Plate)</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Morog Pollaw</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Zali kabab-(Chicken/Beef)</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Brown Egg</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Green Salad</li>
+                    <li className="flex items-start"><span className="text-green-600 mr-2 font-bold">•</span> Soft Drink/M Water-500 ml</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-1' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-1</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳880</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Wonthun</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken Corn Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken Fried Rice</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Massalla Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-2' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-2</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳890</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Wonthun</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Thai Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Egg Fried Rice</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken with Chilli Onion</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Green Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-3' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-3</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳915</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Wonthun</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Thai Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Beef Fried Rice</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Beef with Chilli Onion</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Prawn with Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-4' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-4</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳850</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Wonthun</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Sze-Chuan Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Special Fried Rice</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Sze-Chuan Fried Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Shreded Beef</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Green Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-5' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-5</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳965</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Aahelee Appetizer</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Ash. Special Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Ash. Special Rice</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Spring Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> S/S Prawn</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Special Mixed Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-6' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-6</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳955</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Aahelee Special Salad</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken/Prawn Thai Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken Fried Rice-T</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Spring Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken Sizzling</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Prawn With Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              {selectedPartyMenu === 'chinese-7' && (
+                <div>
+                  <h2 className="text-3xl font-bold text-red-700 mb-2">Party Menu-7</h2>
+                  <p className="text-2xl font-bold text-red-600 mb-6">৳975</p>
+                  <ul className="space-y-2 text-gray-700 text-lg">
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fish Finger</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Special Corn Soup</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Chicken Fried Rice</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Fried Spring Chicken</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Sliced Chicken with Lemon Souce</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Green Vegetable</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> Soft Drinks</li>
+                    <li className="flex items-start"><span className="text-red-600 mr-2 font-bold">•</span> M Water 500 ML</li>
+                  </ul>
+                </div>
+              )}
+
+              <div className="mt-8 bg-navy text-white rounded-lg p-6 text-center">
+                <h3 className="text-xl font-bold mb-3">Book This Party Menu</h3>
+                <p className="mb-4">Contact us for advance booking and customization</p>
+                <a
+                  href="tel:01978322743"
+                  className="bg-orange hover:bg-orange-hover text-white px-6 py-3 rounded-full font-bold transition-all inline-flex items-center gap-2"
+                >
+                  <Phone size={18} />
+                  Call: 01978 322 743
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -55,7 +55,8 @@ const AdminBookings = () => {
         const matchesFilter = filter === 'all' || booking.status === filter
         const matchesSearch = !searchQuery ||
             booking.roomType?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            booking.guestName?.toLowerCase().includes(searchQuery.toLowerCase())
+            booking.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            booking.phone?.toLowerCase().includes(searchQuery.toLowerCase())
         return matchesFilter && matchesSearch
     })
 
@@ -95,7 +96,7 @@ const AdminBookings = () => {
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                         <input
                             type="text"
-                            placeholder="Search by room type or guest name..."
+                            placeholder="Search by name, phone, or room type..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:border-orange focus:ring-0"
@@ -133,6 +134,8 @@ const AdminBookings = () => {
                         <table className="w-full">
                             <thead className="bg-gray-50 border-b">
                                 <tr className="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th className="px-6 py-4">Guest Name</th>
+                                    <th className="px-6 py-4">Phone</th>
                                     <th className="px-6 py-4">Room Type</th>
                                     <th className="px-6 py-4">Check-in</th>
                                     <th className="px-6 py-4">Check-out</th>
@@ -145,7 +148,13 @@ const AdminBookings = () => {
                             <tbody className="divide-y divide-gray-100">
                                 {filteredBookings.map((booking) => (
                                     <tr key={booking.id} className="hover:bg-gray-50">
-                                        <td className="px-6 py-4 font-medium text-gray-800 capitalize">
+                                        <td className="px-6 py-4 font-medium text-gray-800">
+                                            {booking.name || 'N/A'}
+                                        </td>
+                                        <td className="px-6 py-4 text-gray-600">
+                                            {booking.phone || 'N/A'}
+                                        </td>
+                                        <td className="px-6 py-4 text-gray-600 capitalize">
                                             {booking.roomType?.replace(/-/g, ' ') || 'N/A'}
                                         </td>
                                         <td className="px-6 py-4 text-gray-600">
