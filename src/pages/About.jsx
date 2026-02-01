@@ -231,11 +231,11 @@ const About = () => {
             <p className="text-xl text-gray-600">Certifications and achievements that validate our commitment</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-gray-200 p-6 rounded-lg text-center">
               <Star className="text-heritage-gold mx-auto mb-4" size={32} />
               <h3 className="font-bold text-navy mb-2">TripAdvisor Rating</h3>
-              <p className="text-gray-600">4.0/5 from verified guests</p>
+              <p className="text-gray-600">4.8/5 from verified guests</p>
             </div>
 
             <div className="bg-gray-200 p-6 rounded-lg text-center">
@@ -248,18 +248,6 @@ const About = () => {
               <Shield className="text-heritage-gold mx-auto mb-4" size={32} />
               <h3 className="font-bold text-navy mb-2">Fire Safety Compliance</h3>
               <p className="text-gray-600">Certified safety protocols</p>
-            </div>
-
-            <div className="bg-gray-200 p-6 rounded-lg text-center">
-              <Utensils className="text-heritage-gold mx-auto mb-4" size={32} />
-              <h3 className="font-bold text-navy mb-2">Food Safety Certification</h3>
-              <p className="text-gray-600">HACCP compliant kitchen</p>
-            </div>
-
-            <div className="bg-gray-200 p-6 rounded-lg text-center">
-              <Shield className="text-heritage-gold mx-auto mb-4" size={32} />
-              <h3 className="font-bold text-navy mb-2">COVID-19 Protocols</h3>
-              <p className="text-gray-600">Enhanced safety measures</p>
             </div>
 
             <div className="bg-gray-200 p-6 rounded-lg text-center">

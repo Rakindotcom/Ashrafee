@@ -219,8 +219,8 @@ const HeroSection = () => {
         style={{ backgroundImage: 'url(/ashrafee.jpg)' }}
       ></div>
       
-      {/* Green overlay with low opacity */}
-      <div className="absolute inset-0 bg-navy opacity-70"></div>
+      {/* Green overlay with higher opacity */}
+      <div className="absolute inset-0 bg-navy opacity-50"></div>
 
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <h1 className="text-5xl md:text-6xl font-bold mb-6">

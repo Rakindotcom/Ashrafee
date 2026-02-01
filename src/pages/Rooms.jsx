@@ -12,7 +12,7 @@ const Rooms = () => {
       id: 'standard-single',
       name: 'Standard Single',
       category: 'standard',
-      priceBDT: 2700,
+      priceBDT: 2800,
       priceUSD: 23,
       capacity: 1,
       bedType: 'Single bed',
@@ -33,7 +33,7 @@ const Rooms = () => {
       id: 'standard-twin',
       name: 'Standard Twin',
       category: 'standard',
-      priceBDT: 3500,
+      priceBDT: 3850,
       priceUSD: 29,
       capacity: 2,
       bedType: 'Twin beds',
@@ -54,7 +54,7 @@ const Rooms = () => {
       id: 'standard-couple',
       name: 'Standard Couple',
       category: 'standard',
-      priceBDT: 3500,
+      priceBDT: 3850,
       priceUSD: 29,
       capacity: 2,
       bedType: 'Double bed',
@@ -76,7 +76,7 @@ const Rooms = () => {
       id: 'deluxe-single',
       name: 'Deluxe Single',
       category: 'deluxe',
-      priceBDT: 3000,
+      priceBDT: 3100,
       priceUSD: 25,
       capacity: 1,
       bedType: 'Queen bed',
@@ -97,7 +97,7 @@ const Rooms = () => {
       id: 'deluxe-twin',
       name: 'Deluxe Twin',
       category: 'deluxe',
-      priceBDT: 3800,
+      priceBDT: 4150,
       priceUSD: 32,
       capacity: 2,
       bedType: 'Twin beds',
@@ -118,7 +118,7 @@ const Rooms = () => {
       id: 'deluxe-couple',
       name: 'Deluxe Couple',
       category: 'deluxe',
-      priceBDT: 3800,
+      priceBDT: 4150,
       priceUSD: 32,
       capacity: 2,
       bedType: 'King bed',
@@ -140,7 +140,7 @@ const Rooms = () => {
       id: 'super-deluxe-twin',
       name: 'Super Deluxe Twin',
       category: 'super-deluxe',
-      priceBDT: 4200,
+      priceBDT: 4500,
       priceUSD: 35,
       capacity: 2,
       bedType: 'Twin beds',
@@ -161,7 +161,7 @@ const Rooms = () => {
       id: 'super-deluxe-couple',
       name: 'Super Deluxe Couple',
       category: 'super-deluxe',
-      priceBDT: 4200,
+      priceBDT: 4500,
       priceUSD: 35,
       capacity: 2,
       bedType: 'King bed',
@@ -183,7 +183,7 @@ const Rooms = () => {
       id: 'green-deluxe-twin',
       name: 'Green Deluxe Twin',
       category: 'green-deluxe',
-      priceBDT: 4500,
+      priceBDT: 4900,
       priceUSD: 38,
       capacity: 2,
       bedType: 'Twin beds',
@@ -204,7 +204,7 @@ const Rooms = () => {
       id: 'green-deluxe-couple',
       name: 'Green Deluxe Couple',
       category: 'green-deluxe',
-      priceBDT: 4500,
+      priceBDT: 4900,
       priceUSD: 38,
       capacity: 2,
       bedType: 'King bed',
@@ -243,27 +243,7 @@ const Rooms = () => {
       description: 'Spacious family room with three beds, perfect for families or groups traveling together.',
       idealFor: ['Families', 'Group travelers', 'Extended stays']
     },
-    // Driver Room
-    {
-      id: 'driver-room',
-      name: 'Driver Room',
-      category: 'standard',
-      priceBDT: 1500,
-      priceUSD: 13,
-      capacity: 1,
-      bedType: 'Single bed',
-      size: '120 sq ft',
-      view: 'City view',
-      images: ['/standardsingle_1.webp', '/standardsingle_2.webp', '/standardsingle_3.webp'],
-      amenities: [
-        'Daily Housekeeping Services', 'Tea-Coffee Set up',
-        'Attached Washroom', '24 hrs Concierge',
-        'AC Rooms', 'Access Control Floor'
-      ],
-      description: 'Comfortable and affordable accommodation designed specifically for drivers.',
-      idealFor: ['Drivers', 'Budget travelers', 'Short stays'],
-      isPrimary: true
-    }
+
   ]
 
   const categories = [
@@ -364,7 +344,7 @@ const Rooms = () => {
                     )}
                   </div>
                   <div className="text-xl md:text-2xl font-bold text-orange mb-3 md:mb-4">
-                    From BDT {room.priceBDT.toLocaleString()}++ / USD ${room.priceUSD} per night
+                    From BDT {room.priceBDT.toLocaleString()}++ / As Exchange Rate per night
                   </div>
                   <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6">{room.description}</p>
 
@@ -421,10 +401,8 @@ const Rooms = () => {
               <thead>
                 <tr className="bg-navy text-white">
                   <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-left text-xs md:text-base">Room Type</th>
-                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Size</th>
                   <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Bed Type</th>
                   <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Capacity</th>
-                  <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">View</th>
                   <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Price (BDT)</th>
                   <th className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-base">Price (USD)</th>
                 </tr>
@@ -433,15 +411,13 @@ const Rooms = () => {
                 {roomsData.map((room, index) => (
                   <tr key={room.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-gray-200'}>
                     <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 font-medium text-xs md:text-base">{room.name}</td>
-                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.size}</td>
                     <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.bedType}</td>
                     <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.capacity}</td>
-                    <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center text-xs md:text-sm">{room.view}</td>
                     <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-semibold text-xs md:text-sm">
                       {room.priceBDT.toLocaleString()}++
                     </td>
                     <td className="border border-gray-300 px-2 md:px-4 py-2 md:py-3 text-center font-semibold text-xs md:text-sm">
-                      ${room.priceUSD}
+                      As Exchange Rate
                     </td>
                   </tr>
                 ))}
