@@ -276,7 +276,7 @@ const Rooms = () => {
       </section>
 
       {/* Room Categories Filter */}
-      <section className="py-6 md:py-8 bg-elegant-cream">
+      <section className="py-6 md:py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {categories.map(category => (
@@ -366,7 +366,7 @@ const Rooms = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {room.amenities.map((amenity, idx) => (
                         <div key={idx} className="flex items-center text-xs md:text-sm text-gray-700">
-                          <CheckCircle className="text-dhaka-green mr-2 flex-shrink-0" size={16} />
+                          <CheckCircle className="text-dhaka-green mr-2 shrink-0" size={16} />
                           <span>{amenity}</span>
                         </div>
                       ))}

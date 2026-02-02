@@ -94,7 +94,6 @@ const BookingWidget = () => {
       <form onSubmit={handleSubmit}>
         <div className="booking-grid">
           <div>
-            <label className="form-label">Check-in</label>
             <DatePicker
               selected={formData.checkInDate}
               onChange={(date) => setFormData(prev => ({ ...prev, checkInDate: date }))}
@@ -111,7 +110,6 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Check-out</label>
             <DatePicker
               selected={formData.checkOutDate}
               onChange={(date) => setFormData(prev => ({ ...prev, checkOutDate: date }))}
@@ -128,7 +126,6 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Guests</label>
             <select
               name="guests"
               value={formData.guests}
@@ -145,7 +142,6 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Name</label>
             <input
               type="text"
               name="name"
@@ -158,7 +154,6 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Phone</label>
             <input
               type="tel"
               name="phone"
@@ -171,7 +166,6 @@ const BookingWidget = () => {
           </div>
 
           <div>
-            <label className="form-label">Room</label>
             <select
               name="roomType"
               value={formData.roomType}
@@ -212,18 +206,18 @@ const BookingWidget = () => {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center">
+    <section id="home" className="relative h-screen flex items-center pt-20">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/ashrafee.jpg)' }}
       ></div>
       
-      {/* Green overlay with higher opacity */}
-      <div className="absolute inset-0 bg-navy opacity-50"></div>
+      {/* Green overlay with lower opacity */}
+      <div className="absolute inset-0 bg-navy opacity-30"></div>
 
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">
+      <div className="relative z-10 container mx-auto px-4 text-center text-white md:mt-32">
+        <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ textShadow: '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000, -0.5px 0 0 #000, 0.5px 0 0 #000, 0 -0.5px 0 #000, 0 0.5px 0 #000' }}>
           Welcome Home to Hotel Ashrafee
         </h1>
         <p className="text-xl md:text-2xl mb-8 text-gray-200">
@@ -265,7 +259,7 @@ const TrustBar = () => {
   ]
 
   return (
-    <section className="bg-elegant-cream py-16">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {stats.map((stat, index) => (
@@ -936,7 +930,7 @@ const FinalCTASection = () => {
         </div>
 
         <p className="text-sm text-gray-400 mt-8">
-          Trusted by thousands of guests â€¢ 24/7 customer support â€¢ Best rate guarantee
+          Trusted by thousands of guests • 24/7 customer support • Best rate guarantee
         </p>
       </div>
     </section>
@@ -988,8 +982,8 @@ const Home = () => {
     <main id="main-content">
       <HeroSection />
       <TrustBar />
-      <WhyChooseSection />
       <FeaturedRoomsSection />
+      <WhyChooseSection />
       <RestaurantSection />
       <FinalCTASection />
     </main>

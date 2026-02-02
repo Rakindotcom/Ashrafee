@@ -102,7 +102,6 @@ const Contact = () => {
               <div className="space-y-2 text-gray-700">
                 <p>Main: <a href="tel:+8801828183920" className="text-orange hover:underline font-semibold">+880 1828-183920</a></p>
                 <p>Restaurant: <a href="tel:01978322743" className="text-orange hover:underline font-semibold">01978 322 743</a></p>
-                <p className="text-sm text-gray-600">Available 24/7</p>
               </div>
               <a href="tel:+8801828183920" className="btn-primary mt-4 inline-block">
                 CALL NOW

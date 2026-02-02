@@ -503,10 +503,10 @@ const Restaurant = () => {
 
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Chinese Party Menu */}
-            <div className="bg-linear-to-r from-red-50 to-red-100 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-200">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-red-800">Chinese Party Menu</h3>
-                <div className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                <h3 className="text-2xl font-bold text-navy">Chinese Party Menu</h3>
+                <div className="bg-navy text-white px-4 py-2 rounded-full text-sm font-semibold">
                   7 Packages Available
                 </div>
               </div>
@@ -515,7 +515,7 @@ const Restaurant = () => {
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full bg-white rounded-lg shadow-sm">
                   <thead>
-                    <tr className="bg-red-600 text-white">
+                    <tr className="bg-navy text-white">
                       <th className="px-6 py-4 text-left font-semibold">Package Code</th>
                       <th className="px-6 py-4 text-left font-semibold">Package Name</th>
                       <th className="px-6 py-4 text-right font-semibold">Price (BDT)</th>
@@ -532,14 +532,14 @@ const Restaurant = () => {
                       { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00', menuId: 'chinese-6' },
                       { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00', menuId: 'chinese-7' }
                     ].map((pkg, index) => (
-                      <tr key={index} className="hover:bg-red-50 transition-colors">
+                      <tr key={index} className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 text-sm font-mono text-gray-600">#{pkg.code}</td>
                         <td className="px-6 py-4 font-semibold text-gray-800">{pkg.name}</td>
-                        <td className="px-6 py-4 text-right font-bold text-red-600 text-lg">৳{pkg.price}</td>
+                        <td className="px-6 py-4 text-right font-bold text-navy text-lg">৳{pkg.price}</td>
                         <td className="px-6 py-4 text-center">
                           <button
                             onClick={() => setSelectedPartyMenu(pkg.menuId)}
-                            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                            className="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
                           >
                             View Details
                           </button>
@@ -561,19 +561,19 @@ const Restaurant = () => {
                   { code: '0138', name: 'PARTY- 6 CHINESE', price: '955.00', menuId: 'chinese-6' },
                   { code: '0139', name: 'PARTY- 7 CHINESE', price: '975.00', menuId: 'chinese-7' }
                 ].map((pkg, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-red-100">
+                  <div key={index} className="bg-gray-50 p-3 rounded-lg shadow-sm border border-gray-200">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <span className="text-xs text-red-500 font-mono bg-red-50 px-2 py-0.5 rounded">#{pkg.code}</span>
+                        <span className="text-xs text-navy font-mono bg-navy/10 px-2 py-0.5 rounded">#{pkg.code}</span>
                         <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
                       </div>
-                      <div className="text-red-700 font-bold whitespace-nowrap ml-2">
+                      <div className="text-navy font-bold whitespace-nowrap ml-2">
                         ৳{pkg.price}
                       </div>
                     </div>
                     <button
                       onClick={() => setSelectedPartyMenu(pkg.menuId)}
-                      className="w-full bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all"
+                      className="w-full bg-navy hover:bg-navy-dark text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all"
                     >
                       View Details
                     </button>
@@ -583,10 +583,10 @@ const Restaurant = () => {
             </div>
 
             {/* Bangla Party Menu */}
-            <div className="bg-linear-to-r from-green-50 to-green-100 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-200">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-green-800">Bangla Party Menu</h3>
-                <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                <h3 className="text-2xl font-bold text-navy">Bangla Party Menu</h3>
+                <div className="bg-navy text-white px-4 py-2 rounded-full text-sm font-semibold">
                   6 Packages Available
                 </div>
               </div>
@@ -595,7 +595,7 @@ const Restaurant = () => {
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full bg-white rounded-lg shadow-sm">
                   <thead>
-                    <tr className="bg-green-600 text-white">
+                    <tr className="bg-navy text-white">
                       <th className="px-6 py-4 text-left font-semibold">Package Code</th>
                       <th className="px-6 py-4 text-left font-semibold">Package Name</th>
                       <th className="px-6 py-4 text-right font-semibold">Price (BDT)</th>
@@ -611,14 +611,14 @@ const Restaurant = () => {
                       { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00', menuId: 'bangla-5' },
                       { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00', menuId: 'bangla-6' }
                     ].map((pkg, index) => (
-                      <tr key={index} className="hover:bg-green-50 transition-colors">
+                      <tr key={index} className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 text-sm font-mono text-gray-600">#{pkg.code}</td>
                         <td className="px-6 py-4 font-semibold text-gray-800">{pkg.name}</td>
-                        <td className="px-6 py-4 text-right font-bold text-green-600 text-lg">৳{pkg.price}</td>
+                        <td className="px-6 py-4 text-right font-bold text-navy text-lg">৳{pkg.price}</td>
                         <td className="px-6 py-4 text-center">
                           <button
                             onClick={() => setSelectedPartyMenu(pkg.menuId)}
-                            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+                            className="bg-navy hover:bg-navy-dark text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all"
                           >
                             View Details
                           </button>
@@ -639,19 +639,19 @@ const Restaurant = () => {
                   { code: '670', name: 'PARTY- 5 BANGLA', price: '600.00', menuId: 'bangla-5' },
                   { code: '671', name: 'PARTY- 6 BANGLA', price: '500.00', menuId: 'bangla-6' }
                 ].map((pkg, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-sm border border-green-100">
+                  <div key={index} className="bg-gray-50 p-3 rounded-lg shadow-sm border border-gray-200">
                     <div className="flex justify-between items-start mb-2">
                       <div>
-                        <span className="text-xs text-green-600 font-mono bg-green-50 px-2 py-0.5 rounded">#{pkg.code}</span>
+                        <span className="text-xs text-navy font-mono bg-navy/10 px-2 py-0.5 rounded">#{pkg.code}</span>
                         <h4 className="font-bold text-gray-800 text-sm mt-1">{pkg.name}</h4>
                       </div>
-                      <div className="text-green-700 font-bold whitespace-nowrap ml-2">
+                      <div className="text-navy font-bold whitespace-nowrap ml-2">
                         ৳{pkg.price}
                       </div>
                     </div>
                     <button
                       onClick={() => setSelectedPartyMenu(pkg.menuId)}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all"
+                      className="w-full bg-navy hover:bg-navy-dark text-white px-3 py-2 rounded-lg text-sm font-semibold transition-all"
                     >
                       View Details
                     </button>

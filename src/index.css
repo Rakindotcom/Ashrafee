@@ -18,11 +18,11 @@
   --navy-light: #008060;
   --navy-darker: #003D2E;
 
-  /* Secondary Orange Colors */
-  --orange-primary: #fb923c;
-  --orange-alt: #ff9052;
-  --orange-hover: #f97316;
-  --orange-active: #ea580c;
+  /* Secondary Golden Colors */
+  --orange-primary: #D4AF37;
+  --orange-alt: #E5C158;
+  --orange-hover: #C19B2B;
+  --orange-active: #B08A1F;
 
   /* Supporting Colors */
   --heritage-gold: #D4AF37;
@@ -173,6 +173,7 @@ h4 {
 .btn-primary:hover {
   background-color: var(--orange-hover);
   transform: translateY(-1px);
+  cursor: pointer;
 }
 
 .btn-primary:active {
@@ -198,6 +199,7 @@ h4 {
 .btn-secondary:hover {
   background-color: var(--orange-primary);
   color: white;
+  cursor: pointer;
 }
 
 .btn-whatsapp {
@@ -218,6 +220,7 @@ h4 {
 .btn-whatsapp:hover {
   background-color: #059669;
   transform: translateY(-1px);
+  cursor: pointer;
 }
 
 /* Smooth scrolling */
@@ -481,8 +484,8 @@ ccessibility - Screen Reader Only */
 
 /* Booking Widget Container */
 .booking-widget {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(248, 250, 252, 0.35) 100%);
-  border: 1px solid rgba(226, 232, 240, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(248, 250, 252, 0.15) 100%);
+  border: 1px solid rgba(226, 232, 240, 0.2);
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -561,10 +564,12 @@ ccessibility - Screen Reader Only */
   background: linear-gradient(135deg, var(--orange-hover) 0%, var(--orange-active) 100%);
   transform: translateY(-1px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 .btn-booking:active {
   transform: translateY(0);
+  cursor: pointer;
 }
 
 /* Print styles */
@@ -940,28 +945,34 @@ om Date Picker Container */
 .admin-btn-primary {
   background-color: var(--orange-primary);
   color: white;
+  cursor: pointer;
 }
 
 .admin-btn-primary:hover {
   background-color: var(--orange-hover);
+  cursor: pointer;
 }
 
 .admin-btn-secondary {
   background-color: #f3f4f6;
   color: #374151;
+  cursor: pointer;
 }
 
 .admin-btn-secondary:hover {
   background-color: #e5e7eb;
+  cursor: pointer;
 }
 
 .admin-btn-danger {
   background-color: #fee2e2;
   color: #991b1b;
+  cursor: pointer;
 }
 
 .admin-btn-danger:hover {
   background-color: #fecaca;
+  cursor: pointer;
 }
 
 /* Loading Spinner */
