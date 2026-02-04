@@ -206,17 +206,25 @@ const BookingWidget = () => {
 // Hero Section Component
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center pt-20">
+    <section id="home" className="relative h-screen flex flex-col pt-20 overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/ashrafee.jpg)' }}
       ></div>
-      
-      {/* Green overlay with lower opacity */}
-      <div className="absolute inset-0 bg-navy opacity-30"></div>
 
-      <div className="relative z-10 container mx-auto px-4 text-center text-white md:mt-32">
+      {/* Blur Overlays */}
+      {/* Left blur */}
+      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-20 bg-linear-to-r from-black/20 via-black/10 to-transparent backdrop-blur-[3px]"></div>
+      
+      {/* Right blur */}
+      <div className="absolute right-0 top-0 bottom-0 w-32 md:w-40 bg-linear-to-l from-black/30 via-black/15 to-transparent backdrop-blur-xs"></div>
+      
+      {/* Bottom blur */}
+      <div className="absolute left-0 right-0 bottom-0 h-32 md:h-40 bg-linear-to-t from-black/40 via-black/20 to-transparent backdrop-blur-xs"></div>
+
+      {/* Content Container - positioned at bottom */}
+      <div className="relative z-10 container mx-auto px-4 text-center text-white mt-auto pb-4">
         <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ textShadow: '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000, -0.5px 0 0 #000, 0.5px 0 0 #000, 0 -0.5px 0 #000, 0 0.5px 0 #000' }}>
           Welcome Home to Hotel Ashrafee
         </h1>
@@ -226,12 +234,12 @@ const HeroSection = () => {
         </p>
 
         {/* Booking Widget */}
-        <div className="mb-12">
+        <div className="mb-6">
           <BookingWidget />
         </div>
 
         {/* Trust Badges */}
-        <div className="flex flex-wrap justify-center items-center gap-8 text-sm md:text-base">
+        <div className="flex flex-wrap justify-center items-center gap-8 text-sm md:text-base mb-4">
           <div className="flex items-center gap-2">
             <Award className="text-heritage-gold" size={20} />
             <span>Since 1990</span>

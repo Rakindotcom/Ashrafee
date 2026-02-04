@@ -100,8 +100,8 @@ const Contact = () => {
               </div>
               <h3 className="text-xl font-bold text-navy mb-4">Phone</h3>
               <div className="space-y-2 text-gray-700">
-                <p>Main: <a href="tel:+8801828183920" className="text-orange hover:underline font-semibold">+880 1828-183920</a></p>
-                <p>Restaurant: <a href="tel:01978322743" className="text-orange hover:underline font-semibold">01978 322 743</a></p>
+                <p>Room Booking: <a href="tel:+8801828183920" className="text-orange hover:underline font-semibold">+880 1828-183920</a></p>
+                <p>Food Booking <a href="tel:01978322743" className="text-orange hover:underline font-semibold">01978 322 743</a></p>
               </div>
               <a href="tel:+8801828183920" className="btn-primary mt-4 inline-block">
                 CALL NOW
