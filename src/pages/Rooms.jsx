@@ -310,23 +310,25 @@ const Rooms = () => {
                     <img 
                       src={selectedImages[room.id] || room.images[0]} 
                       alt={room.name}
-                      className="w-full h-full object-cover rounded-lg shadow-lg"
+                      className="w-full h-full object-cover rounded-lg shadow-lg room-image-enhanced"
                     />
                   </div>
                   <div className="grid grid-cols-3 gap-2 mt-3 md:mt-4">
                     {room.images.map((img, i) => (
                       <div 
                         key={i} 
-                        className="cursor-pointer overflow-hidden rounded"
+                        className={`cursor-pointer overflow-hidden rounded transition-all ${
+                          (selectedImages[room.id] || room.images[0]) === img 
+                            ? 'ring-3 ring-orange' 
+                            : 'ring-2 ring-transparent hover:ring-orange hover:ring-2'
+                        }`}
                         style={{ aspectRatio: '16/9' }}
                         onClick={() => setSelectedImages({...selectedImages, [room.id]: img})}
                       >
                         <img 
                           src={img} 
                           alt={`${room.name} ${i + 1}`}
-                          className={`w-full h-full object-cover transition-opacity ${
-                            (selectedImages[room.id] || room.images[0]) === img ? 'opacity-100 ring-2 ring-orange' : 'opacity-70 hover:opacity-100'
-                          }`}
+                          className="w-full h-full object-cover room-thumbnail-enhanced"
                         />
                       </div>
                     ))}

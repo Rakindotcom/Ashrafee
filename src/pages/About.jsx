@@ -8,7 +8,7 @@ const About = () => {
       <section className="bg-navy text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            34 Years of Dhaka Hospitality
+            35 Years of Dhaka Hospitality
           </h1>
           <nav className="text-gray-300">
             <Link to="/" className="hover:text-orange">Home</Link>
@@ -81,8 +81,8 @@ const About = () => {
                 <div className="flex items-center">
                   <div className="w-4 h-4 bg-heritage-gold rounded-full mr-4"></div>
                   <div>
-                    <span className="font-semibold text-navy">2024:</span>
-                    <span className="text-gray-700 ml-2">34 years of excellence</span>
+                    <span className="font-semibold text-navy">2025:</span>
+                    <span className="text-gray-700 ml-2">35 years of excellence</span>
                   </div>
                 </div>
               </div>

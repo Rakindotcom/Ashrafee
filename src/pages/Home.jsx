@@ -261,7 +261,7 @@ const HeroSection = () => {
 // Trust Bar Component
 const TrustBar = () => {
   const stats = [
-    { number: '34', label: 'Years of Excellence', suffix: '+' },
+    { number: '35', label: 'Years of Excellence', suffix: '+' },
     { number: '50,000', label: 'Happy Guests', suffix: '+' },
     { number: '4.9', label: 'Average Rating', suffix: '/5' }
   ]
